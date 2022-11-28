@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Vista personalizada de Formulario -->
+    <!-- <record id="coordenada_model_view_view_form" model="ir.ui.view">
+        <field name="name">coordenada.form</field>
+        <field name="model">coordenada</field>
+        <field name="arch" type="xml">
+
+
+            <form string="Coordenada">
+                <sheet>
+                    <group>
+                        <group>
+
+                            <notebook>
+                                <page string="Coords">
+                                    <group>
+
+                                        <field name="coord_x"/>
+                                        <field name="coord_y"/>
+                                        <field name="latitud"/>
+                                        <field name="longitud"/>
+
+                                    </group>
+                                </page>
+                            </notebook>
+
+                        </group>
+
+                    </group>
+
+                </sheet>
+            </form>
+
+
+        </field>
+    </record> -->
+
+
+    <!-- Vista personalizada de arbol inicial -->
+    <!-- <record id="coordenada_model_view_tree" model="ir.ui.view">
+        <field name="name">coordenada.tree</field> 
+        <field name="model">coordenada</field> 
+        <field name="arch" type="xml">
+            <tree string="coordenada"> 
+                <field name="coord_x"/>
+                <field name="coord_y"/>
+                <field name="latitud"/>
+                <field name="longitud"/>
+            </tree>
+        </field>
+    </record> -->
+
+    
+    <!-- Vista personalizada Modulo Accion -->
+    <record id="coordenada_model_action" model="ir.actions.act_window"> <!-- id IGUAL A MENU EN acciones_menu_views.xml -->
+        <field name="name">Coordenada</field> <!-- name ES DESCRIPTIVO, ES LO QUE APARECERA EN WEB -->
+        <field name="res_model">coordenada</field> <!-- NOMBRE DEL MODELO EN models/acciones_property.py - nombre del modelo  -->
+        <field name="view_mode">tree,form</field>
+    </record>
+   
+
+</odoo>
