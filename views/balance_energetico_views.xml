@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Vista personalizada de Formulario -->
+    
+
+    <!-- Vista personalizada de arbol inicial -->
+
+    
+    <!-- Vista personalizada Modulo Accion -->
+    <record id="balance_energetico_model_action" model="ir.actions.act_window"> <!-- id IGUAL A MENU EN acciones_menu_views.xml -->
+        <field name="name">Balance Energético</field> <!-- name ES DESCRIPTIVO, ES LO QUE APARECERA EN WEB -->
+        <field name="res_model">balance.energetico</field> <!-- NOMBRE DEL MODELO EN models/acciones_property.py - nombre del modelo  -->
+        <field name="view_mode">tree,form</field>
+    </record>
+   
+
+</odoo>

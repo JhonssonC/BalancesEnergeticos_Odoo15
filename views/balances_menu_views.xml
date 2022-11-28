@@ -2,7 +2,18 @@
 <odoo>
 <menuitem id="balances_menu_root" name="Balances Energéticos"> 
     <menuitem id="balances_first_level_menu" name="Menú">
-        <menuitem id="coordenada_balances_model_menu_action" action="coordenada_model_action"/> 
+        <menuitem id="vinculacion_balances_model_menu_action" action="vinculacion_model_action"/> 
+        <menuitem id="balances_model_menu_action" action="balance_energetico_model_action"/> 
+        <menuitem id="consumidor_balances_model_menu_action" action="consumidor_model_action"/> 
+        <menuitem id="transformador_balances_model_menu_action" action="transformador_model_action"/> 
+        <menuitem id="red_balances_model_menu_action" action="red_model_action"/> 
+        <menuitem id="punto_carga_balances_model_menu_action" action="punto_carga_model_action"/> 
+        <menuitem id="marca_medidor_balances_model_menu_action" action="marca_medidor_model_action"/> 
+        <menuitem id="tipo_consumidor_balances_model_menu_action" action="tipo_consumidor_model_action"/> 
+        <menuitem id="tipo_vinculacion_balances_model_menu_action" action="tipo_vinculacion_model_action"/>
+        <menuitem id="provincia_balances_model_menu_action" action="provincia_model_action"/> 
+        <menuitem id="canton_balances_model_menu_action" action="canton_model_action"/> 
+        <menuitem id="coordenada_balances_model_menu_action" action="coordenada_model_action"/>  
     </menuitem>
 </menuitem>
 </odoo>

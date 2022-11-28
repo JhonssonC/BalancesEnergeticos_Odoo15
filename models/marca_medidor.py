@@ -2,7 +2,7 @@ from odoo import fields, models
 
 
 class marca_medidor(models.Model):
-    _name = "marca_medidor"
+    _name = "marca.medidor"
     _description = "Marca de Medidor"
 
    

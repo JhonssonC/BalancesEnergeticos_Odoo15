@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Vista personalizada de Formulario -->
+    
+
+    <!-- Vista personalizada de arbol inicial -->
+
+    
+    <!-- Vista personalizada Modulo Accion -->
+    <record id="marca_medidor_model_action" model="ir.actions.act_window"> 
+        <field name="name">Marcas de Medidor</field>
+        <field name="res_model">marca.medidor</field> 
+        <field name="view_mode">tree,form</field>
+    </record>
+   
+
+</odoo>
