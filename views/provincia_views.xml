@@ -46,7 +46,7 @@
                 <field name="id"/>
                 <field name="codigo"/>
                 <field name="nombre"/>
-                <field name="actie"/>
+                <field name="active"/>
             </tree>
         </field>
     </record>
