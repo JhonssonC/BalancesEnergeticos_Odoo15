@@ -2,9 +2,54 @@
 <odoo>
 
     <!-- Vista personalizada de Formulario -->
+    <record id="provincia_model_view_form" model="ir.ui.view">
+        <field name="name">provincia.form</field>
+        <field name="model">provincia</field>
+        <field name="arch" type="xml">
+
+            <form string="Provincia">
+                <sheet>
+                    <group>
+                        <group>
+
+                            <notebook>
+                                <page string="Provincia">
+                                    <group>
+
+                                        <field name="id"/>
+                                        <field name="codigo"/>
+                                        <field name="nombre"/>
+                                        <field name="active"/>
+
+                                    </group>
+                                </page>
+                            </notebook>
+
+                        </group>
+
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+
+    </record>
     
 
     <!-- Vista personalizada de arbol inicial -->
+    <record id="provincia_model_view_tree" model="ir.ui.view">
+        <field name="name">provincia.tree</field> 
+        <field name="model">provincia</field> 
+        <field name="arch" type="xml">
+            <tree string="Provincia"> 
+                <field name="id"/>
+                <field name="codigo"/>
+                <field name="nombre"/>
+                <field name="actie"/>
+            </tree>
+        </field>
+    </record>
 
     
     <!-- Vista personalizada Modulo Accion -->
