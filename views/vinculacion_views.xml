@@ -47,11 +47,11 @@
     
 
     <!-- Vista personalizada de arbol inicial -->
-    <record id="balance_energetico_model_view_tree" model="ir.ui.view">
-        <field name="name">balance.energetico.tree</field> 
-        <field name="model">balance.energetico</field> 
+    <record id="vinculacion_model_view_tree" model="ir.ui.view">
+        <field name="name">vinculacion.tree</field> 
+        <field name="model">vinculacion</field> 
         <field name="arch" type="xml">
-            <tree string="Balance Energético">
+            <tree string="Vinculación">
                 <field name="id"/>
                 <field name="tipo_vinculacion_id"/>
                 <field name="consumidor_id"/>
