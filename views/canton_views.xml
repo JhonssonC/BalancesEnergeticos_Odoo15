@@ -17,7 +17,7 @@
                                 <page string="Canton">
                                     <group>
 
-                                        <field name="provincia"/>
+                                        <field name="provincia_id"/>
                                         <field name="id"/>
                                         <field name="codigo"/>
                                         <field name="nombre"/>
@@ -45,7 +45,7 @@
         <field name="model">canton</field> 
         <field name="arch" type="xml">
             <tree string="Canton"> 
-                <field name="provincia"/>
+                <field name="provincia_id"/>
                 <field name="id"/>
                 <field name="codigo"/>
                 <field name="nombre"/>
