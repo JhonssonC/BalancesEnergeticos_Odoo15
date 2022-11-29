@@ -18,7 +18,9 @@ class provincia(models.Model):
         
         for rec in self:
             print(rec)
-            name = '[ '+rec.codigo+' ] '+rec.nombre
+            code = rec.codigo
+            code = f'{code:02d}'
+            name = '[ '+code+' ] '+rec.nombre
             result.append((rec.id, name))
         
         return result
