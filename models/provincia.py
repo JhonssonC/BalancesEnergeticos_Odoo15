@@ -12,7 +12,10 @@ class provincia(models.Model):
     active = fields.Boolean('Esta activo', default=True)
 
     def name_get(self):
-        print ("...Context...", self)
+
         result = []
+        print ("...Context...", self.env.context)
+        
         for rec in self:
-            print(rec)
+            #print(rec)
+            pass
