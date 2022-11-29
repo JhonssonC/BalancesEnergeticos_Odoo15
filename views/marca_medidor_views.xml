@@ -2,9 +2,54 @@
 <odoo>
 
     <!-- Vista personalizada de Formulario -->
+    <record id="marca_medidor_model_view_form" model="ir.ui.view">
+        <field name="name">marca.medidor.form</field>
+        <field name="model">marca.medidor</field>
+        <field name="arch" type="xml">
+
+            <form string="Marca de Medidor">
+                <sheet>
+                    <group>
+                        <group>
+
+                            <notebook>
+                                <page string="Marca de Medidor">
+                                    <group>
+
+                                        <field name="id"/>
+                                        <field name="nomenclatura"/>
+                                        <field name="descripcion"/>
+                                        <field name="active"/>
+
+                                    </group>
+                                </page>
+                            </notebook>
+
+                        </group>
+
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+
+    </record>
     
 
     <!-- Vista personalizada de arbol inicial -->
+    <record id="marca_medidor_model_view_tree" model="ir.ui.view">
+        <field name="name">marca.medidor.tree</field> 
+        <field name="model">marca.medidor</field> 
+        <field name="arch" type="xml">
+            <tree string="Marcas de Medidor"> 
+                <field name="id"/>
+                <field name="nomenclatura"/>
+                <field name="descripcion"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
 
     
     <!-- Vista personalizada Modulo Accion -->

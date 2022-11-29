@@ -2,9 +2,52 @@
 <odoo>
 
     <!-- Vista personalizada de Formulario -->
+    <record id="punto_carga_model_view_form" model="ir.ui.view">
+        <field name="name">punto.carga.form</field>
+        <field name="model">punto.carga</field>
+        <field name="arch" type="xml">
+
+            <form string="Punto de Carga">
+                <sheet>
+                    <group>
+                        <group>
+
+                            <notebook>
+                                <page string="Punto de Carga">
+                                    <group>
+
+                                        <field name="id"/>
+                                        <field name="coord"/>
+                                        <field name="active"/>
+
+                                    </group>
+                                </page>
+                            </notebook>
+
+                        </group>
+
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+
+    </record>
     
 
     <!-- Vista personalizada de arbol inicial -->
+    <record id="punto_carga_model_view_tree" model="ir.ui.view">
+        <field name="name">punto.carga.tree</field> 
+        <field name="model">punto.carga</field> 
+        <field name="arch" type="xml">
+            <tree string="Punto de Carga"> 
+                <field name="id"/>
+                <field name="coord"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
 
     
     <!-- Vista personalizada Modulo Accion -->

@@ -2,9 +2,64 @@
 <odoo>
 
     <!-- Vista personalizada de Formulario -->
+    <record id="vinculacion_model_view_form" model="ir.ui.view">
+        <field name="name">vinculacion.form</field>
+        <field name="model">vinculacion</field>
+        <field name="arch" type="xml">
+
+            <form string="Vinculación">
+                <sheet>
+                    <group>
+                        <group>
+
+                            <notebook>
+                                <page string="Vinculación">
+                                    <group>
+
+                                        <field name="id"/>
+                                        <field name="tipo_vinculacion_id"/>
+                                        <field name="consumidor_id"/>
+                                        <field name="balance_energetico_id"/>
+                                        <field name="lectura"/>
+                                        <field name="fecha_hora"/>
+                                        <field name="voltaje"/>
+                                        <field name="carga_l1"/>
+                                        <field name="carga_l2"/>
+                                        <field name="horas_uso"/>
+                                        <field name="potencia"/>
+                                        <field name="observacion"/>
+                                        <field name="active"/>
+
+                                    </group>
+                                </page>
+                            </notebook>
+
+                        </group>
+
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+
+    </record>
     
 
     <!-- Vista personalizada de arbol inicial -->
+    <record id="balance_energetico_model_view_tree" model="ir.ui.view">
+        <field name="name">balance.energetico.tree</field> 
+        <field name="model">balance.energetico</field> 
+        <field name="arch" type="xml">
+            <tree string="Balance Energético">
+                <field name="id"/>
+                <field name="tipo_vinculacion_id"/>
+                <field name="consumidor_id"/>
+                <field name="balance_energetico_id"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
 
     
     <!-- Vista personalizada Modulo Accion -->

@@ -1,10 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
+    
     <!-- Vista personalizada de Formulario -->
+    <record id="transformador_model_view_form" model="ir.ui.view">
+        <field name="name">transformador.form</field>
+        <field name="model">transformador</field>
+        <field name="arch" type="xml">
+
+            <form string="Transformador">
+                <sheet>
+                    <group>
+                        <group>
+
+                            <notebook>
+                                <page string="Transformador">
+                                    <group>
+
+                                        <field name="id"/>
+                                        <field name="codigo"/>
+                                        <field name="potencia"/>
+                                        <field name="serie"/>
+                                        <field name="coord"/>
+                                        <field name="active"/>
+
+                                    </group>
+                                </page>
+                            </notebook>
+
+                        </group>
+
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+
+    </record>
     
 
     <!-- Vista personalizada de arbol inicial -->
+    <record id="transformador_model_view_tree" model="ir.ui.view">
+        <field name="name">transformador.tree</field> 
+        <field name="model">transformador</field> 
+        <field name="arch" type="xml">
+            <tree string="Transformador"> 
+                <field name="id"/>
+                <field name="codigo"/>
+                <field name="potencia"/>
+                <field name="serie"/>
+                <field name="coord"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
 
     
     <!-- Vista personalizada Modulo Accion -->

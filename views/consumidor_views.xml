@@ -2,9 +2,61 @@
 <odoo>
 
     <!-- Vista personalizada de Formulario -->
+    <record id="consumidor_model_view_form" model="ir.ui.view">
+        <field name="name">consumidor.form</field>
+        <field name="model">consumidor</field>
+        <field name="arch" type="xml">
+
+            <form string="Consumidor">
+                <sheet>
+                    <group>
+                        <group>
+
+                            <notebook>
+                                <page string="Consumidor">
+                                    <group>
+
+                                        <field name="id"/>
+                                        <field name="tipo_consumidor_id"/>
+                                        <field name="codigo"/>
+                                        <field name="medidor"/>
+                                        <field name="marca_medidor_id"/>
+                                        <field name="tipo_conexion"/>
+                                        <field name="compartido"/>
+                                        <field name="cantidad_compartido"/>
+                                        <field name="punto_carga_id"/>
+                                        <field name="active"/>
+
+                                    </group>
+                                </page>
+                            </notebook>
+
+                        </group>
+
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+
+    </record>
     
 
     <!-- Vista personalizada de arbol inicial -->
+    <record id="consumidor_model_view_tree" model="ir.ui.view">
+        <field name="name">consumidor.tree</field> 
+        <field name="model">consumidor</field> 
+        <field name="arch" type="xml">
+            <tree string="Consumidor"> 
+                <field name="id"/>
+                <field name="tipo_consumidor_id"/>
+                <field name="codigo"/>
+                <field name="compartido"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
 
     
     <!-- Vista personalizada Modulo Accion -->

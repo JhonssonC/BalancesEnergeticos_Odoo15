@@ -2,9 +2,52 @@
 <odoo>
 
     <!-- Vista personalizada de Formulario -->
+    <record id="tipo_vinculacion_model_view_form" model="ir.ui.view">
+        <field name="name">tipo.vinculacion.form</field>
+        <field name="model">tipo.vinculacion</field>
+        <field name="arch" type="xml">
+
+            <form string="Tipo de Vinculación">
+                <sheet>
+                    <group>
+                        <group>
+
+                            <notebook>
+                                <page string="Tipo de Vinculación">
+                                    <group>
+
+                                        <field name="id"/>
+                                        <field name="nombre"/>
+                                        <field name="active"/>
+
+                                    </group>
+                                </page>
+                            </notebook>
+
+                        </group>
+
+                    </group>
+
+                </sheet>
+            </form>
+
+        </field>
+
+    </record>
     
 
     <!-- Vista personalizada de arbol inicial -->
+    <record id="tipo_vinculacion_model_view_tree" model="ir.ui.view">
+        <field name="name">tipo.vinculacion.tree</field> 
+        <field name="model">tipo.vinculacion</field> 
+        <field name="arch" type="xml">
+            <tree string="Tipo de Vinculación"> 
+                <field name="id"/>
+                <field name="nombre"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
 
     
     <!-- Vista personalizada Modulo Accion -->
