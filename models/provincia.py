@@ -17,5 +17,8 @@ class provincia(models.Model):
         print ("...Context...", self.env.context)
         
         for rec in self:
-            #print(rec)
-            pass
+            print(rec)
+            name = '[ '+rec.codigo+' ] '+rec.nombre
+            result.append((rec.id, name))
+        
+        return result
