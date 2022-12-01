@@ -26,7 +26,7 @@ class consumidor(models.Model):
         #print ("...Context...", self.env.context)
         
         for rec in self:
-            name = f'[ {rec.tipo_consumidor_id} ]  {rec.codigo}'
+            name = f'[ {rec.tipo_consumidor_id.nombre} ]  {rec.codigo}'
             result.append((rec.id, name))
         
         return result
