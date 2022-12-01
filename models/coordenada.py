@@ -19,7 +19,7 @@ class coordenada(models.Model):
         #print ("...Context...", self.env.context)
         
         for rec in self:
-            name = f'[ {rec.coord_x:03d}, {rec.coord_y:03d} ] '
+            name = f'[ {rec.coord_x:.3f}, {rec.coord_y:.3f} ] '
             result.append((rec.id, name))
         
         return result
