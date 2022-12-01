@@ -20,13 +20,3 @@ class consumidor(models.Model):
     active = fields.Boolean('Esta activo', default=True)
 
 
-    def name_get(self):
-
-        result = []
-        #print ("...Context...", self.env.context)
-        
-        for rec in self:
-            name = f'[ {rec.tipo_consumidor_id.nombre} ]  {rec.codigo}'
-            result.append((rec.id, name))
-        
-        return result
