@@ -11,3 +11,15 @@ class coordenada(models.Model):
     longitud = fields.Float("Longitud")
 
     active = fields.Boolean('Esta activo', default=True)
+
+
+    def name_get(self):
+
+        result = []
+        #print ("...Context...", self.env.context)
+        
+        for rec in self:
+            name = f'[ {rec.coord_x:03d}, {rec.coord_y:03d} ] '
+            result.append((rec.id, name))
+        
+        return result

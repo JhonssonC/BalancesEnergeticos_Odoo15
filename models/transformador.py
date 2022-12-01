@@ -12,3 +12,15 @@ class transformador(models.Model):
     coord = fields.Many2one("coordenada", string="Punto Coordenada")
 
     active = fields.Boolean('Esta activo', default=True)
+
+
+    def name_get(self):
+
+        result = []
+        #print ("...Context...", self.env.context)
+        
+        for rec in self:
+            name = f'[ {rec.codigo} ] {rec.serie} / {rec.potencia}'
+            result.append((rec.id, name))
+        
+        return result

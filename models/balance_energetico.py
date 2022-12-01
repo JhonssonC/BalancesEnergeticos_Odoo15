@@ -15,3 +15,15 @@ class balance_energetico(models.Model):
     error = fields.Float("Error en Medición de Red (en %)")
 
     active = fields.Boolean('Esta activo', default=True)
+
+
+    def name_get(self):
+
+        result = []
+        #print ("...Context...", self.env.context)
+        
+        for rec in self:
+            name = f'[ {rec.id:03d} ]  {rec.red_id} {rec.nombre}'
+            result.append((rec.id, name))
+        
+        return result

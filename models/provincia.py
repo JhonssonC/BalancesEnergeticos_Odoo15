@@ -11,13 +11,14 @@ class provincia(models.Model):
 
     active = fields.Boolean('Esta activo', default=True)
 
+
     def name_get(self):
 
         result = []
-        print ("...Context...", self.env.context)
+        #print ("...Context...", self.env.context)
         
         for rec in self:
-            print(rec)
+            #print(rec)
             code = rec.codigo
             code = f'{code:02d}'
             name = '[ '+code+' ] '+rec.nombre
