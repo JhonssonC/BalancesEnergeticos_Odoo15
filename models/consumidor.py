@@ -5,9 +5,11 @@ class consumidor(models.Model):
     _name = "consumidor"
     _description = "Consumidor en Red"
 
-    tipo_consumidor_id = fields.Many2one("tipo_consumidor", string="Tipo de Consumidor")
     codigo = fields.Char("Codigo")
     medidor = fields.Char("Medidor")
+    
+    tipo_consumidor_id = fields.Many2one("tipo_consumidor", string="Tipo de Consumidor")
+    
     marca_medidor_id = fields.Many2one("marca_medidor", string="Marca")
     tipo_conexion = fields.Selection([('AE', 'Aerea'), ('SU','Subterranea')])
 
@@ -20,3 +22,13 @@ class consumidor(models.Model):
     active = fields.Boolean('Esta activo', default=True)
 
 
+    def name_get(self):
+
+        result = []
+        #print ("...Context...", self.env.context)
+        
+        for rec in self:
+            name = f'[ {rec.tipo_consumidor_id.nombre} ]  {rec.codigo}'
+            result.append((rec.id, name))
+        
+        return result
