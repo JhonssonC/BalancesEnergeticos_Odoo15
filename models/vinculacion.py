@@ -5,9 +5,9 @@ class vinculacion(models.Model):
     _name = "vinculacion"
     _description = "Vinculacion de Consumidor a Balance Energético"
 
-    tipo_vinculacion_id = fields.Many2one("tipo_vinculacion", string="Tipo de Vinculacion")
+    tipo_vinculacion_id = fields.Many2one("tipo.vinculacion", string="Tipo de Vinculacion")
     consumidor_id = fields.Many2one("consumidor", string="Consumidor")
-    balance_energetico_id = fields.Many2one("balance_energetico", string="Balance de Energia")
+    balance_energetico_id = fields.Many2one("balance.energetico", string="Balance de Energia")
 
     lectura = fields.Float("Lectura")
     fecha_hora = fields.Datetime("Momento de Reporte", default=lambda self: fields.Datetime.now())

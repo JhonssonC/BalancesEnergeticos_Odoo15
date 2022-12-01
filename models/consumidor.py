@@ -7,16 +7,16 @@ class consumidor(models.Model):
 
     codigo = fields.Char("Codigo")
     medidor = fields.Char("Medidor")
+
+    tipo_consumidor_id = fields.Many2one("tipo.consumidor", string="Tipo de Consumidor")
     
-    tipo_consumidor_id = fields.Many2one("tipo_consumidor", string="Tipo de Consumidor")
-    
-    marca_medidor_id = fields.Many2one("marca_medidor", string="Marca")
-    tipo_conexion = fields.Selection([('AE', 'Aerea'), ('SU','Subterranea')])
+    marca_medidor_id = fields.Many2one("marca.medidor", string="Marca")
+    tipo_conexion = fields.Selection([('AE', 'Aerea'), ('SU','Subterranea')], string="Tipo de Conexion")
 
 
     compartido = fields.Boolean('Punto Compartido (Caja Distribuidora / Panel / Parte de Agrupacion de medidores)', default=False)
     cantidad_compartido = fields.Integer("Cantidad de Medidores Agrupados")
-    punto_carga_id = fields.Many2one("punto_carga", "Punto de Carga")
+    punto_carga_id = fields.Many2one("punto.carga", "Punto de Carga")
     
 
     active = fields.Boolean('Esta activo', default=True)
