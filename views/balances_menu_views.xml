@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+
 <menuitem
-    id="menu_balances_root"
-    name="Balances Energéticos EOR"
-    web_icon="balancesEnergeticos,static/description/icon.png"
-    sequence="0"/>
-
-
-<menuitem id="balances_menu_root" name="Balances Energéticos"> 
+        id="balances_menu_root"
+        name="Balances Energéticos"
+        web_icon="balancesEnergeticos,static/description/icon.png">
     <menuitem id="balances_first_level_menu" name="Menú">
         <menuitem id="vinculacion_balances_model_menu_action" action="vinculacion_model_action"/> 
         <menuitem id="balances_model_menu_action" action="balance_energetico_model_action"/> 

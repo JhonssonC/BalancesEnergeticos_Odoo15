@@ -11,26 +11,45 @@
             <form string="Coordenada">
                 <sheet>
                     <group>
-                        <group>
+                        <notebook>
+                            <page string="X - Y" >
+                                <group>
+                                    <field name="coord_x" digits="[8,2]"/>
+                                    <field name="coord_y" digits="[8,2]"/>
+                                </group>
+                            </page>
+                        </notebook>
+                        <notebook>
+                            <page string="Lat - Lng" >
+                                <group>
+                                    <field name="latitud" digits="[8,6]"/>
+                                    <field name="longitud" digits="[8,6]"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>
 
-                            <notebook>
-                                <page string="Coordenada">
-                                    <group>
+                    <table style="width:100%">
+                        <tbody>
+                            <tr>
+                                <td style="width:50%">
+                                    <button id="ubicar" style="horizontal-align: middle; display: block; margin:auto;">Ver mi Ubicación Actual</button>
+                                </td>
+                                <td style="width:50%">
+                                    <button id="presentar" style="horizontal-align: middle; display: block; margin:auto;">Presentar en el Mapa Coordenada Escrita</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                                        <field name="coord_x"/>
-                                        <field name="coord_y"/>
-                                        <field name="latitud"/>
-                                        <field name="longitud"/>
-
-                                    </group>
-                                </page>
-                            </notebook>
-
-                        </group>
-
+                    <group>
+                                <div id="mapid" style="height:300px;width:100%;"></div>
                     </group>
 
                 </sheet>
+                <script src="/balancesEnergeticos/static/src/js/utmLatLng.js"/>
+                <script src="/balancesEnergeticos/static/src/js/map.js"/>
+
             </form>
 
 
