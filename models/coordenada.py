@@ -9,6 +9,7 @@ class coordenada(models.Model):
     coord_y = fields.Float("Coordenada Y")
     latitud = fields.Float("Latitud")
     longitud = fields.Float("Longitud")
+    precision = fields.Float("Precision")
 
     active = fields.Boolean('Esta activo', default=True)
 

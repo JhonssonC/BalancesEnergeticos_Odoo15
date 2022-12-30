@@ -10,26 +10,16 @@
 
             <form string="Coordenada">
                 <sheet>
+
                     <group>
                         <notebook>
-                            <page string="X - Y" >
-                                <group>
-                                    <field name="coord_x" digits="[8,2]"/>
-                                    <field name="coord_y" digits="[8,2]"/>
-                                </group>
-                            </page>
-                        </notebook>
-                        <notebook>
-                            <page string="Lat - Lng" >
-                                <group>
-                                    <field name="latitud" digits="[8,6]"/>
-                                    <field name="longitud" digits="[8,6]"/>
-                                </group>
+                            <page string="Precision de Coordenada" >
+                                    <field name="precision" digits="[2,2]"/>
                             </page>
                         </notebook>
                     </group>
 
-                    <table style="width:100%">
+                    <table id="tblButtons" style="width:100%">
                         <tbody>
                             <tr>
                                 <td style="width:50%">
@@ -46,8 +36,30 @@
                                 <div id="mapid" style="height:300px;width:100%;"></div>
                     </group>
 
+                    <group>
+                        <notebook>
+                            <page string="X - Y" >
+                                <group>
+                                    <field name="coord_x" digits="[8,2]"/>
+                                    <field name="coord_y" digits="[8,2]"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>
+                    <group>
+                        <notebook>
+                            <page string="Lat - Lng" >
+                                <group>
+                                    <field name="latitud" digits="[8,6]"/>
+                                    <field name="longitud" digits="[8,6]"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>
+
+
                 </sheet>
-                <script src="/balancesEnergeticos/static/src/js/utmLatLng.js"/>
+
                 <script src="/balancesEnergeticos/static/src/js/map.js"/>
 
             </form>
