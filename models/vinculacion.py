@@ -20,3 +20,4 @@ class vinculacion(models.Model):
     
 
     active = fields.Boolean('Esta activo', default=True)
+    user_id = fields.Many2one('res.users', default=lambda self: self.env.user)

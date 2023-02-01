@@ -11,6 +11,7 @@ class canton(models.Model):
     nombre = fields.Char("Nombre")
 
     active = fields.Boolean('Esta activo', default=True)
+    user_id = fields.Many2one('res.users', default=lambda self: self.env.user)
 
     def name_get(self):
 

@@ -1,3 +1,4 @@
+from . import foto
 from . import coordenada
 from . import balance_energetico
 from . import canton

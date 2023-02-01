@@ -17,7 +17,8 @@
         <menuitem id="tipo_consumidor_balances_model_menu_action" action="tipo_consumidor_model_action"/> 
         <menuitem id="tipo_vinculacion_balances_model_menu_action" action="tipo_vinculacion_model_action"/>
         <menuitem id="provincia_balances_model_menu_action" action="provincia_model_action"/> 
-        <menuitem id="canton_balances_model_menu_action" action="canton_model_action"/> 
+        <menuitem id="canton_balances_model_menu_action" action="canton_model_action"/>
+        <menuitem id="foto_balances_model_menu_action" action="foto_model_action"/>
         <menuitem id="coordenada_balances_model_menu_action" action="coordenada_model_action"/>  
     </menuitem>
 </menuitem>

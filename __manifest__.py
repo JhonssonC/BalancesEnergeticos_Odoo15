@@ -1,7 +1,7 @@
 {
     'name': 'Balances Energéticos EOR',
     'version': '1.0.0',
-    'category': 'Operations',
+    'category': 'Productivity/Balances',
     'author': 'JhonssonC',
     'sequence': -101,
     'summary': 'Control de Energía en redes de Distribucion de Bajo Voltaje, EL Oro',
@@ -10,8 +10,10 @@
         'base',
     ],
     'data': [
+        'security/be_security.xml',
         'security/ir.model.access.csv',
 
+        'views/fotos_views.xml',
         'views/coordenadas_views.xml',
         'views/transformador_views.xml',
         'views/punto_carga_views.xml',

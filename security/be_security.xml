@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="base.module_category_productivity_balances" model="ir.module.category">
+        <field name="description">Manejo de Usuarios de Modulos de Balances Energéticos.</field>
+        <field name="sequence">7</field>
+    </record>
+
+
+    <record id="group_balances_energeticos_user" model="res.groups">
+        <field name="name">Instalador</field>
+        <field name="category_id" ref="base.module_category_productivity_balances"/>
+        <field name="implied_ids" eval="[(6, 0, [ref('base.group_private_addresses'), ref('base.group_user')])]"/>
+        <field name="comment">Grupo de Balances Energéticos.</field>
+    </record>
+
+    <record id="group_balances_energeticos_manager" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="category_id" ref="base.module_category_productivity_balances"/>
+        <field name="implied_ids" eval="[(4, ref('group_balances_energeticos_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        <field name="comment">Usuario de acceso a Administracion de Modulo de Balances Energéticos.</field>
+    </record>
+
+
+    <data noupdate="1">
+
+        <record id="rule_foto_user" model="ir.rule">
+            <field name="name">Regla para modelo de foto (Usuarios)</field>
+            <field name="model_id" ref="model_foto"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
+            <field name="domain_force">[
+                '|', ('user_id', '=', user.id),
+                     ('user_id', '=', False)
+            ]</field>
+        </record>
+        <record id="rule_foto_manager" model="ir.rule">
+            <field name="name">Regla para modelo de foto (Administradores)</field>
+            <field name="model_id" ref="model_foto"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_manager'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+
+
+        <record id="rule_coordenada_user" model="ir.rule">
+            <field name="name">Regla para modelo de Coordenadas (Usuarios)</field>
+            <field name="model_id" ref="model_coordenada"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
+            <field name="domain_force">[
+                '|', ('user_id', '=', user.id),
+                     ('user_id', '=', False)
+            ]</field>
+        </record>
+        <record id="rule_coordenada_manager" model="ir.rule">
+            <field name="name">Regla para modelo de Coordenadas (Administradores)</field>
+            <field name="model_id" ref="model_coordenada"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_manager'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+
+
+        <record id="rule_balance_energetico_user" model="ir.rule">
+            <field name="name">Regla para modelo de balance_energetico (Usuarios)</field>
+            <field name="model_id" ref="model_balance_energetico"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
+            <field name="domain_force">[
+                '|', ('user_id', '=', user.id),
+                     ('user_id', '=', False)
+            ]</field>
+        </record>
+        <record id="rule_balance_energetico_manager" model="ir.rule">
+            <field name="name">Regla para modelo de balance_energetico (Administradores)</field>
+            <field name="model_id" ref="model_balance_energetico"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_manager'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+
+
+        <record id="rule_canton_user" model="ir.rule">
+            <field name="name">Regla para modelo de canton (Usuarios)</field>
+            <field name="model_id" ref="model_canton"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
+            <field name="domain_force">[
+                '|', ('user_id', '=', user.id),
+                     ('user_id', '=', False)
+            ]</field>
+        </record>
+        <record id="rule_canton_manager" model="ir.rule">
+            <field name="name">Regla para modelo de canton (Administradores)</field>
+            <field name="model_id" ref="model_canton"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_manager'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+
+
+        <record id="rule_consumidor_user" model="ir.rule">
+            <field name="name">Regla para modelo de consumidor (Usuarios)</field>
+            <field name="model_id" ref="model_consumidor"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
+            <field name="domain_force">[
+                '|', ('user_id', '=', user.id),
+                     ('user_id', '=', False)
+            ]</field>
+        </record>
+        <record id="rule_consumidor_manager" model="ir.rule">
+            <field name="name">Regla para modelo de consumidor (Administradores)</field>
+            <field name="model_id" ref="model_consumidor"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_manager'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+
+
+        <record id="rule_marca_medidor_user" model="ir.rule">
+            <field name="name">Regla para modelo de marca_medidor (Usuarios)</field>
+            <field name="model_id" ref="model_marca_medidor"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
+            <field name="domain_force">[
+                '|', ('user_id', '=', user.id),
+                     ('user_id', '=', False)
+            ]</field>
+        </record>
+        <record id="rule_marca_medidor_manager" model="ir.rule">
+            <field name="name">Regla para modelo de marca_medidor (Administradores)</field>
+            <field name="model_id" ref="model_marca_medidor"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_manager'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+
+
+        <record id="rule_provincia_user" model="ir.rule">
+            <field name="name">Regla para modelo de provincia (Usuarios)</field>
+            <field name="model_id" ref="model_provincia"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
+            <field name="domain_force">[
+                '|', ('user_id', '=', user.id),
+                     ('user_id', '=', False)
+            ]</field>
+        </record>
+        <record id="rule_provincia_manager" model="ir.rule">
+            <field name="name">Regla para modelo de provincia (Administradores)</field>
+            <field name="model_id" ref="model_provincia"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_manager'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+
+
+        <record id="rule_punto_carga_user" model="ir.rule">
+            <field name="name">Regla para modelo de punto_carga (Usuarios)</field>
+            <field name="model_id" ref="model_punto_carga"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
+            <field name="domain_force">[
+                '|', ('user_id', '=', user.id),
+                     ('user_id', '=', False)
+            ]</field>
+        </record>
+        <record id="rule_punto_carga_manager" model="ir.rule">
+            <field name="name">Regla para modelo de punto_carga (Administradores)</field>
+            <field name="model_id" ref="model_punto_carga"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_manager'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+
+
+        <record id="rule_red_user" model="ir.rule">
+            <field name="name">Regla para modelo de red (Usuarios)</field>
+            <field name="model_id" ref="model_red"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
+            <field name="domain_force">[
+                '|', ('user_id', '=', user.id),
+                     ('user_id', '=', False)
+            ]</field>
+        </record>
+        <record id="rule_red_manager" model="ir.rule">
+            <field name="name">Regla para modelo de red (Administradores)</field>
+            <field name="model_id" ref="model_red"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_manager'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+
+
+        <record id="rule_tipo_consumidor_user" model="ir.rule">
+            <field name="name">Regla para modelo de tipo_consumidor (Usuarios)</field>
+            <field name="model_id" ref="model_tipo_consumidor"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
+            <field name="domain_force">[
+                '|', ('user_id', '=', user.id),
+                     ('user_id', '=', False)
+            ]</field>
+        </record>
+        <record id="rule_tipo_consumidor_manager" model="ir.rule">
+            <field name="name">Regla para modelo de tipo_consumidor (Administradores)</field>
+            <field name="model_id" ref="model_tipo_consumidor"/>
+            <field name="perm_read" eval="False"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_manager'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+
+
+        <record id="rule_tipo_vinculacion_user" model="ir.rule">
+            <field name="name">Regla para modelo de tipo_vinculacion (Usuarios)</field>
+            <field name="model_id" ref="model_tipo_vinculacion"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
+            <field name="domain_force">[
+                '|', ('user_id', '=', user.id),
+                     ('user_id', '=', False)
+            ]</field>
+        </record>
+        <record id="rule_tipo_vinculacion_manager" model="ir.rule">
+            <field name="name">Regla para modelo de tipo_vinculacion (Administradores)</field>
+            <field name="model_id" ref="model_tipo_vinculacion"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_manager'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+
+
+        <record id="rule_transformador_user" model="ir.rule">
+            <field name="name">Regla para modelo de transformador (Usuarios)</field>
+            <field name="model_id" ref="model_transformador"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
+            <field name="domain_force">[
+                '|', ('user_id', '=', user.id),
+                     ('user_id', '=', False)
+            ]</field>
+        </record>
+        <record id="rule_transformador_manager" model="ir.rule">
+            <field name="name">Regla para modelo de transformador (Administradores)</field>
+            <field name="model_id" ref="model_transformador"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_manager'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+
+
+        <record id="rule_vinculacion_user" model="ir.rule">
+            <field name="name">Regla para modelo de vinculacion (Usuarios)</field>
+            <field name="model_id" ref="model_vinculacion"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
+            <field name="domain_force">[
+                '|', ('user_id', '=', user.id),
+                     ('user_id', '=', False)
+            ]</field>
+        </record>
+        <record id="rule_vinculacion_manager" model="ir.rule">
+            <field name="name">Regla para modelo de vinculacion (Administradores)</field>
+            <field name="model_id" ref="model_vinculacion"/>
+            <field name="groups" eval="[Command.link(ref('group_balances_energeticos_manager'))]"/>
+            <field name="domain_force">[]</field>
+        </record>
+
+    </data>
+
+</odoo>
