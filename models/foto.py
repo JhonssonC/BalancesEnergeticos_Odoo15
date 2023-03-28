@@ -1,9 +1,10 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class foto(models.Model):
     _name = "foto"
     _description = "Fotografia"
+    _rec_name = "nombre"
 
     id = fields.Integer("Id")
     fotografia = fields.Image("Fotografia")

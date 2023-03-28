@@ -10,60 +10,20 @@
 
             <form string="Fotografia">
                 <sheet>
-
                     <group>
                         <notebook>
                             <page string="Foto" >
-
-                                <!--<table id="tblButtons" style="width:100%">
-                                    <tbody>
-                                        <tr>
-                                            <td style="width:100%">
-                                                <button id="tomarFoto" onClick="tomarFoto()" class="btn btn-primary o_select_file_button">Camara</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="width:100%">
-                                                <canvas id="canvasfoto" width="0%" height="0"/>
-                                                <video id="videoFoto" width="100%" height="300"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="width:100%">
-                                                <button id="take-photo">Tomar Foto</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="width:100%">
-                                                <img id="fotoTomada" style="height:300px;width:100%;"/>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>-->
-
-
                                 <group>
-
                                     <field name="nombre"/>
-
                                     <field name="fotografia" widget="image"/>
-
                                 </group>
-
-
-
                             </page>
                         </notebook>
                     </group>
-
-
                 </sheet>
-
                 <script src="/balancesEnergeticos/static/src/js/photo.js"/>
-
             </form>
-
-
+            
         </field>
     </record>
 

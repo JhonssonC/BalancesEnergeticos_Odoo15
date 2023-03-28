@@ -7,53 +7,130 @@
         <field name="model">consumidor</field>
         <field name="arch" type="xml">
 
+
             <form string="Consumidor">
+                <!-- <header>
+                    <button name="action_search_code" string="Buscar Por Codigo" type="object" class="oe_highlight"/>
+                    <field name="codigo" string="Código de búsqueda"/>
+                    <br/>
+                    <br/>
+                    <button name="action_search_medidor" string="Buscar Por Medidor" type="object" class="oe_highlight"/>
+                    <field name="codigo" string="Medidor de búsqueda"/>
+                </header> -->
+
                 <sheet>
-                    <group>
-                        <group>
+                        <notebook>
+                            <page string="Consumidor">
+                                <group>
 
-                            <notebook>
-                                <page string="Consumidor">
-                                    <group>
+                                    <field name="id"/>
+                                    <field name="tipo_consumidor_id"/>
 
-                                        <field name="id"/>
-                                        <field name="tipo_consumidor_id"/>
+                                    <label for="codigo"/>
+                                    <div class="o_row">
                                         <field name="codigo"/>
-                                        <field name="medidor"/>
-                                        <field name="marca_medidor_id"/>
-                                        <field name="tipo_conexion"/>
-                                        <field name="compartido"/>
-                                        <field name="cantidad_compartido"/>
-                                        <field name="punto_carga_id"/>
-                                        <field name="active"/>
+                                        <button id="buscar_codigo" style="horizontal-align: middle; display: block; margin:auto;">Buscar Código</button>
+                                    </div>
+                                    
+                                    <label for="medidor"/>
+                                    <div class="o_row">
+                                        <field name="medidor" attrs="{'invisible': [('tipo_consumidor_id', '>', 4)]}"/>
+                                        <button id="buscar_medidor" style="horizontal-align: middle; display: block; margin:auto;">Buscar Medidor</button>
+                                    </div>
+                                    
 
-                                    </group>
-                                </page>
-                            </notebook>
+<!-- 
+                                </group>
+                                <table id="tblCodigo" style="width:100%">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width:25%">
+                                                <label for="codigo"/> 
+                                            </td>
+                                            <td style="width:45%">
+                                                <field name="codigo"/> 
+                                            </td>
+                                            <td style="width:30%">
+                                                <button id="buscar_codigo" style="horizontal-align: middle; display: block; margin:auto;">Buscar Código</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-                        </group>
+                                <table id="tblMedidor" style="width:100%">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width:25%">
+                                                <label for="medidor"/> 
+                                            </td>
+                                            <td style="width:45%">
+                                                <field name="medidor" attrs="{'invisible': [('tipo_consumidor_id', '>', 4)]}"/>
+                                            </td>
+                                            <td style="width:30%">
+                                                <button id="buscar_medidor" style="horizontal-align: middle; display: block; margin:auto;">Buscar Medidor</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <group> -->
 
-                    </group>
 
+                                    <field name="nombre" attrs="{'invisible': [('tipo_consumidor_id', '>', 4)]}"/>
+                                    <field name="direccion" attrs="{'invisible': [('tipo_consumidor_id', '>', 4)]}"/>
+                                    <field name="geo" attrs="{'invisible': [('tipo_consumidor_id', '>', 4)]}"/>
+                                    <field name="serie" attrs="{'invisible': [('tipo_consumidor_id', '>', 4)]}"/>
+                                    <field name="marca_medidor_id" attrs="{'invisible': [('tipo_consumidor_id', '>', 4)]}"/>
+                                    <field name="marca_oculta" attrs="{'invisible': 1}"/>
+                                    <field name="potencia_id" attrs="{'invisible': [('tipo_consumidor_id', 'in', (1,2,3,4))]}" />
+                                    <field name="tipo_conexion"/>
+                                    <field name="compartido" attrs="{'invisible': [('tipo_consumidor_id', 'in', (5))]}"/>
+                                    <field name="cantidad_compartido" attrs="{'invisible': [('compartido', '=', False)]}"/>
+                                    <field name="punto_carga_id"/>
+                                    <field name="active"/>
+
+                                </group>
+                            </page>
+                        </notebook>
                 </sheet>
+                <script src="/balancesEnergeticos/static/src/js/consumidor.js"/>
             </form>
 
         </field>
-
     </record>
+
+
+
+    <!-- <odoo>
+        <record id="view_popup_tree" model="ir.ui.view">
+            <field name="name">popup.tree.view</field>
+            <field name="model">model.name</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="field1"/>
+                    <field name="field2"/>
+                    <field name="field3"/>
+                </tree>
+            </field>
+        </record>
+    </odoo> -->
+
+
     
 
     <!-- Vista personalizada de arbol inicial -->
     <record id="consumidor_model_view_tree" model="ir.ui.view">
-        <field name="name">consumidor.tree</field> 
-        <field name="model">consumidor</field> 
+        <field name="name">consumidor.tree</field>
+        <field name="model">consumidor</field>
         <field name="arch" type="xml">
+        
             <tree string="Consumidor"> 
+
                 <field name="id"/>
                 <field name="tipo_consumidor_id"/>
                 <field name="codigo"/>
                 <field name="compartido"/>
                 <field name="active"/>
+                
             </tree>
         </field>
     </record>
@@ -65,6 +142,6 @@
         <field name="res_model">consumidor</field> 
         <field name="view_mode">tree,form</field>
     </record>
-   
+
 
 </odoo>

@@ -4,6 +4,7 @@ from odoo import fields, models
 class punto_carga(models.Model):
     _name = "punto.carga"
     _description = "Punto de Carga"
+    _rec_name = "id"
 
 
     coord = fields.Many2one("coordenada", string="Punto Coordenada")
@@ -17,7 +18,7 @@ class punto_carga(models.Model):
         #print ("...Context...", self.env.context)
         
         for rec in self:
-            name = f'[ {rec.id:05d} ]-[ {rec.coord.coord_x:.3f}, {rec.coord.coord_y:.3f} ]'
+            name = f'{rec.id:05d} - [X:{rec.coord.coord_x:.3f}, Y:{rec.coord.coord_y:.3f}] - Punto de Carga'
             result.append((rec.id, name))
         
         return result

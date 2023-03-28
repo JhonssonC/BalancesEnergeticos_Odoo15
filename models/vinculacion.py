@@ -15,8 +15,11 @@ class vinculacion(models.Model):
     carga_l1 = fields.Float("Carga en Linea 1")
     carga_l2 = fields.Float("Carga en Linea 2")
     horas_uso = fields.Integer("Horas de uso aproximado en el dia")
-    potencia = fields.Float("Potencia")
-    observacion = fields.Char("Observaciones y Novedaades")
+    
+    potencia_id = fields.Many2one("potencia", string="Potencia", default=None, required=False)
+    #potencia = fields.Float("Potencia")
+    
+    observacion = fields.Char("Observaciones y Novedades")
     
 
     active = fields.Boolean('Esta activo', default=True)

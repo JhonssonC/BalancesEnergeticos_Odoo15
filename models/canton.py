@@ -4,6 +4,7 @@ from odoo import fields, models
 class canton(models.Model):
     _name = "canton"
     _description = "Canton"
+    _rec_name="nombre"
 
 
     codigo = fields.Integer("Codigo")

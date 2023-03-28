@@ -1,9 +1,10 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class balance_energetico(models.Model):
     _name = "balance.energetico"
     _description = "Balance Energético"
+    _rec_name = "nombre"
 
     red_id = fields.Many2one("red", string="Red")
 
@@ -16,6 +17,14 @@ class balance_energetico(models.Model):
 
     active = fields.Boolean('Esta activo', default=True)
     user_id = fields.Many2one('res.users', default=lambda self: self.env.user)
+    
+    # @api.depends('red_id', 'nombre')
+    # def _compute_rec_name(self):
+    #     for record in self:
+    #         record.rec_name = f"{record.id} - {record.red_id} - {record.nombre}"
+    
+    # rec_name = fields.Char(string='Name', compute='_compute_rec_name', store=False)
+    
 
     def name_get(self):
 

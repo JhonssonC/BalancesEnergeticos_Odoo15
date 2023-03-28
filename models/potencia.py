@@ -1,14 +1,13 @@
 from odoo import fields, models
 
 
-class provincia(models.Model):
-    _name = "provincia"
-    _description = "Provincia"
-    _rec_name = "codigo"
+class potencia(models.Model):
+    _name = "potencia"
+    _description = "Potencia"
+    _rec_name = "nombre"
 
 
-    codigo = fields.Integer("Codigo")
-    nombre = fields.Char("Nombre")
+    nombre = fields.Float("Nombre", required=True)
 
     active = fields.Boolean('Esta activo', default=True)
     user_id = fields.Many2one('res.users', default=lambda self: self.env.user)
@@ -20,9 +19,9 @@ class provincia(models.Model):
         
         for rec in self:
             #print(rec)
-            code = rec.codigo
-            code = f'{code:02d}'
-            name = '[ '+code+' ] '+rec.nombre
+            code = rec.nombre
+            code = f'{code:.00f}'
+            name = ''+code+' KW'
             result.append((rec.id, name))
         
         return result

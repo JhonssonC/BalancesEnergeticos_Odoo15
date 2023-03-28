@@ -10,34 +10,28 @@
             <form string="Vinculación">
                 <sheet>
                     <group>
-                        <group>
+                        <notebook>
+                            <page string="Vinculación">
+                                <group>
 
-                            <notebook>
-                                <page string="Vinculación">
-                                    <group>
+                                    <field name="id"/>
+                                    <field name="tipo_vinculacion_id"/>
+                                    <field name="consumidor_id"/>
+                                    <field name="balance_energetico_id"/>
+                                    <field name="lectura"/>
+                                    <field name="fecha_hora"/>
+                                    <field name="voltaje"/>
+                                    <field name="carga_l1"/>
+                                    <field name="carga_l2"/>
+                                    <field name="horas_uso"/>
+                                    <field name="potencia_id"/>
+                                    <field name="observacion"/>
+                                    <field name="active"/>
 
-                                        <field name="id"/>
-                                        <field name="tipo_vinculacion_id"/>
-                                        <field name="consumidor_id"/>
-                                        <field name="balance_energetico_id"/>
-                                        <field name="lectura"/>
-                                        <field name="fecha_hora"/>
-                                        <field name="voltaje"/>
-                                        <field name="carga_l1"/>
-                                        <field name="carga_l2"/>
-                                        <field name="horas_uso"/>
-                                        <field name="potencia"/>
-                                        <field name="observacion"/>
-                                        <field name="active"/>
-
-                                    </group>
-                                </page>
-                            </notebook>
-
-                        </group>
-
+                                </group>
+                            </page>
+                        </notebook>
                     </group>
-
                 </sheet>
             </form>
 

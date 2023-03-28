@@ -7,7 +7,7 @@
     'summary': 'Control de Energía en redes de Distribucion de Bajo Voltaje, EL Oro',
     'description': """Control de Energía en redes de Distribucion de Bajo Voltaje, EL Oro""",
     'depends': [
-        'base',
+        'base', 'web'
     ],
     'data': [
         'security/be_security.xml',
@@ -21,14 +21,16 @@
         'views/tipo_consumidor_views.xml',
         'views/marca_medidor_views.xml',
         'views/provincia_views.xml',
+        'views/potencia_views.xml',
         'views/canton_views.xml',
         'views/red_views.xml',
         'views/balance_energetico_views.xml',
         'views/consumidor_views.xml',
         'views/vinculacion_views.xml',
 
-
         'views/balances_menu_views.xml',
+        
+        
     ],
     'assets': {
         # -----------------------------
@@ -51,7 +53,7 @@
             # EXAMPLE Can include sub assets bundle
             #('include', 'web._assets_helpers'),
             #'web/static/lib/bootstrap/scss/_variables.scss',
-            'balancesEnergeticos/static/src/css/leaflet.css',
+            'balancesEnergeticos/static/src/css/leaflet.css'
         ],
         'web.assets_common_lazy': [
             # ...
@@ -61,6 +63,7 @@
             #'balancesEnergeticos/static/src/js/utmLatLng.js',
             #'balancesEnergeticos/static/src/js/map.js',
             #'balancesEnergeticos/static/src/js/*',
+            'balancesEnergeticos/static/src/js/consumidorPopup.js',
         ],
         "web.assets_backend_legacy_lazy": [
             # ...

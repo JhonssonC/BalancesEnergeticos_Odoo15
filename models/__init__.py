@@ -5,6 +5,7 @@ from . import canton
 from . import consumidor
 from . import marca_medidor
 from . import provincia
+from . import potencia
 from . import punto_carga
 from . import red
 from . import tipo_consumidor
