@@ -18,13 +18,15 @@ class balance_energetico(models.Model):
     active = fields.Boolean('Esta activo', default=True)
     user_id = fields.Many2one('res.users', default=lambda self: self.env.user)
     
-    # @api.depends('red_id', 'nombre')
-    # def _compute_rec_name(self):
+    # red = fields.Char(string='Red', compute='_compute_red')
+
+    # @api.depends('red_id')
+    # def _compute_red(self):
     #     for record in self:
-    #         record.rec_name = f"{record.id} - {record.red_id} - {record.nombre}"
-    
-    # rec_name = fields.Char(string='Name', compute='_compute_rec_name', store=False)
-    
+    #         if record.red_id.nombre:
+    #             record.red_id = record.red_id.nombre
+    #         else:
+    #             record.red = False
 
     def name_get(self):
 
@@ -32,7 +34,31 @@ class balance_energetico(models.Model):
         #print ("...Context...", self.env.context)
         
         for rec in self:
-            name = f'[ {rec.id:03d} ]  {rec.red_id} {rec.nombre}'
+            name = f'[{rec.id:03d}] {rec.red_id.nombre} {rec.nombre}'
             result.append((rec.id, name))
         
         return result
+    
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        print (args)
+        if args:
+            for arg in args:
+                if arg[0] == '&' and len(arg) == 3:
+                    campo = arg[0][0]
+                    valor = arg[2].lower()
+                    new_arg = '|', ('id', 'ilike', valor), ('red_id.nombre', 'ilike', valor), ('nombre', 'ilike', valor)
+                    args[args.index(arg)] = new_arg
+                    break
+        return super(balance_energetico, self).search(args, offset=offset, limit=limit, order=order, count=count)
+    
+
+    @api.model
+    def _name_search(self, name='', args=None, operator='ilike', limit=100, name_get_uid=None):
+        #print (self, name, args, operator, limit, name_get_uid)
+        args = list(args or [])
+        if name :
+            args += ['|', '|' , ('nombre', operator, name), ('red_id', operator, name), ('id', operator, name)]
+        #print (self, name, args, operator, limit, name_get_uid)
+        return self._search(args, limit=limit, access_rights_uid=name_get_uid)
+    

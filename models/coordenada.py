@@ -25,3 +25,25 @@ class coordenada(models.Model):
             result.append((rec.id, name))
         
         return result
+    
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        if args:
+            for arg in args:
+                if arg[0] == '&' and len(arg) == 3:
+                    campo = arg[0][0]
+                    valor = arg[2].lower()
+                    new_arg = '|', ('id', 'ilike', valor), ('coord_x', 'ilike', valor), ('coord_y', 'ilike', valor)
+                    args[args.index(arg)] = new_arg
+                    break
+        return super(coordenada, self).search(args, offset=offset, limit=limit, order=order, count=count)
+    
+    
+    @api.model
+    def _name_search(self, name='', args=None, operator='ilike', limit=100, name_get_uid=None):
+        #print (self, name, args, operator, limit, name_get_uid)
+        args = list(args or [])
+        if name :
+            args += ['|', '|', ('id', operator, name), ('coord_x', operator, name), ('coord_y', operator, name)]
+        #print (self, name, args, operator, limit, name_get_uid)
+        return self._search(args, limit=limit, access_rights_uid=name_get_uid)

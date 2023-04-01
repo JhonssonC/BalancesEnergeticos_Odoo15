@@ -4,7 +4,7 @@ from odoo import fields, models
 class tipo_vinculacion(models.Model):
     _name = "tipo.vinculacion"
     _description = "Tipo de Vinculación"
-
+    _rec_name = "nombre"
    
     nombre = fields.Char("Nombre")
     

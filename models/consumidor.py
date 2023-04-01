@@ -1,7 +1,6 @@
 from odoo import api, fields, models
 
 
-
 class consumidor(models.Model):
     _name = "consumidor"
     _description = "Consumidor en Red"
@@ -42,7 +41,7 @@ class consumidor(models.Model):
         #print ("...Context...", self.env.context)
         
         for rec in self:
-            name = f'({rec.id})-{rec.codigo}-[{rec.tipo_consumidor_id.nombre}]'
+            name = f'{rec.codigo}-ID({rec.id})-[{rec.tipo_consumidor_id.nombre}]'
             result.append((rec.id, name))
         
         return result
@@ -59,6 +58,15 @@ class consumidor(models.Model):
                     break
         return super(consumidor, self).search(args, offset=offset, limit=limit, order=order, count=count)
     
+    
+    @api.model
+    def _name_search(self, name='', args=None, operator='ilike', limit=100, name_get_uid=None):
+        #print (self, name, args, operator, limit, name_get_uid)
+        args = list(args or [])
+        if name :
+            args += ['|', '|' , '|' , ('id', operator, name), ('tipo_consumidor_id', operator, name), ('codigo', operator, name), ('medidor', operator, name)]
+        #print (self, name, args, operator, limit, name_get_uid)
+        return self._search(args, limit=limit, access_rights_uid=name_get_uid)
     
          
     

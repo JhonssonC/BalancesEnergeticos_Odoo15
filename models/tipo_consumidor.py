@@ -17,7 +17,7 @@ class tipo_consumidor(models.Model):
         #print ("...Context...", self.env.context)
         
         for rec in self:
-            name = f'[ {rec.id:02d} ]  {rec.nombre}'
+            name = f'[{rec.id:02d}]-{rec.nombre}'
             result.append((rec.id, name))
         
         return result

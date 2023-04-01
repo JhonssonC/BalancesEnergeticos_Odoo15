@@ -15,18 +15,25 @@
                                 <group>
 
                                     <field name="id"/>
+                                    <field name="fecha_hora"/>
+                                    <field name="balance_energetico_id"/>
                                     <field name="tipo_vinculacion_id"/>
                                     <field name="consumidor_id"/>
-                                    <field name="balance_energetico_id"/>
-                                    <field name="lectura"/>
-                                    <field name="fecha_hora"/>
-                                    <field name="voltaje"/>
-                                    <field name="carga_l1"/>
-                                    <field name="carga_l2"/>
-                                    <field name="horas_uso"/>
-                                    <field name="potencia_id"/>
+                                    <field name="tipo_consumidor" attrs="{'invisible': 1}" />
+                                    <field name="lectura" attrs="{'invisible': [('tipo_consumidor', 'in', (-1,5,6,7,8,9,10,11))]}"/>
+                                    
+                                    <field name="voltaje" attrs="{'invisible': [('tipo_consumidor', 'in', (-1,1,2,3,4))]}"/>
+
+                                    <field name="carga_l1" attrs="{'invisible': [('tipo_consumidor', 'in', (-1,1,2,3,4))]}"/>
+                                    <field name="carga_l2" attrs="{'invisible': [('tipo_consumidor', 'in', (-1,1,2,3,4))]}"/>
+                                    <field name="horas_uso" attrs="{'invisible': [('tipo_consumidor', 'in', (-1,1,2,3,4))]}"/>
+                                    <field name="potencia_id" attrs="{'invisible': [('tipo_consumidor', 'in', (-1,1,2,3,4))]}"/>
+
+                                    <field name="fotos"/>
+                                    
                                     <field name="observacion"/>
-                                    <field name="active"/>
+
+                                    <field name="active" attrs="{'invisible': 1}"/>
 
                                 </group>
                             </page>

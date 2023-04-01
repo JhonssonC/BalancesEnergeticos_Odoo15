@@ -4,6 +4,7 @@ from odoo import fields, models
 class red(models.Model):
     _name = "red"
     _description = "Identificador de Red"
+    _rec_name = "nombre"
 
 
     nombre = fields.Char("Nombre de Red")
@@ -21,7 +22,7 @@ class red(models.Model):
         #print ("...Context...", self.env.context)
         
         for rec in self:
-            name = f'[ {rec.id:05d} ]  {rec.nombre}'
+            name = f'{rec.nombre}'
             result.append((rec.id, name))
         
         return result
