@@ -1,0 +1,462 @@
+<odoo>
+    <template id="report_balance">
+
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+
+                    <div class="page">
+                        <h2>
+                            <strong>Reporte de Balance Energético</strong>
+                        </h2>
+                        <div></div>
+                        <table class="table">
+                            <tbody>
+
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <label>Red</label>
+                                    </td>
+                                    <td colspan="3" style="width: 100%; text-align:center;">
+                                        <strong>
+                                        <h4><span t-field="o.red_id" /></h4>
+                                        </strong>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <label>Nombre</label>
+                                    </td>
+                                    <td style="width: 50%; text-align:center;">
+                                        <strong>
+                                        <h4><span t-field="o.nombre" /></h4>
+                                        </strong>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <label>
+                                            ID
+                                        </label>
+                                    </td>
+                                    <td style="width: 50%; text-align:center;">
+                                        <strong>
+                                        <h3><span t-field="o.id" /></h3>
+                                        </strong>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <label>Fecha de Levantamiento Inicial</label>
+                                    </td>
+                                    <td style="width: 25%; text-align:center;">
+                                        <span t-field="o.fecha_inicial" />
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <label>Fecha de Levantamiento Posterior</label>
+                                    </td>
+                                    <td style="width: 25%; text-align:center;">
+                                        <span t-field="o.fecha_final" />
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <label>Consumo Consumidores</label>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-field="o.consumo_consumidores" /> Kw
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <label>Consumo Totalizador</label>
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <span t-field="o.consumo_totalizador" /> Kw
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <table class="table" t-attf-style="background-color:#{ '#FADBD8' if ( o.color == 'red' ) else ( '#FCF3CF' if ( o.color == 'yellow' ) else ('#D1F2EB' if (o.consumo_consumidores>0) else '') ) };">
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <label>Eficacia en Medición de Red (en %)</label>
+                                    </td>
+                                    <td style="width: 50%; text-align:center;">
+                                        <span id="eficacia" t-esc="round(o.eficacia * 100, 2)" />%
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <label>Error en Medición de Red (en %)</label>
+                                    </td>
+                                    <td style="width: 50%; text-align:center;">
+                                        <span id="error" t-esc="round(o.error * 100, 2)" />%
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    
+                    </div>
+                    <div class="page">
+
+                        <table class="table" style="margin-top: 10px">
+                            <tbody>
+                                <tr></tr>
+                                <tr>
+                                    <td colspan="4" style="width: 100%; text-align:center;">
+                                        <div>
+                                            <h3>Localización / Características</h3>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <label>Sector de ubicacion del Transformador</label>
+                                    </td>
+                                    <td style="width: 50%; text-align:center;">
+                                        <span t-field="o.red_id_sector" />
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <label>Id Red</label>
+                                    </td>
+                                    <td style="width: 50%; text-align:center;">
+                                        <span t-field="o.red_id_id" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <label>Codigo de Transformador</label>
+                                    </td>
+                                    <td style="width: 50%; text-align:center;">
+                                        <span t-field="o.red_id_trafo_codigo" />
+                                    </td>
+                                    <td style="text-align:center;">
+                                        <label>Capacidad de Transformador</label>
+                                    </td>
+                                    <td style="width: 50%; text-align:center;">
+                                        <span t-field="o.red_id_trafo_capacidad" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;" colspan="2">
+                                        <label>Coordenada X de Transformador</label>
+                                    </td>
+                                    <td style="text-align:center;" colspan="2">
+                                        <label>Coordenada Y de Transformador</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="width: 50%; text-align:center;">
+                                        <span t-field="o.red_id_trafo_x" />
+                                    </td>
+                                    <td colspan="2" style="width: 50%; text-align:center;">
+                                        <span t-field="o.red_id_trafo_y" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                        <table class="table" style="margin-bottom: 0px; margin-top: 10px">
+                            <tbody>
+                                <tr></tr>
+                                <tr>
+                                    <td colspan="6" style="width: 100%; text-align:center;">
+                                        <div ><h3>Resumen de Resultados de Balance</h3></div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <table class="table" style="margin-bottom: 0px;">
+                            <tbody>
+                                <tr>
+                                    <td colspan="1" style="width: 50%; text-align:center;">
+                                        <div >Real</div>
+                                    </td>
+                                     <td colspan="1" style="width: 50%; text-align:center;">
+                                        <div >Proyeccion ( mes )</div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+                        <table class="table" style="margin-bottom: 0px;">
+                            <tbody>
+                                <tr>
+                                    <td colspan="1" style="width: 17%; text-align:center;">
+                                        <div >Parámetro</div>
+                                    </td>
+                                    <td colspan="1" style="width: 16%; text-align:center;">
+                                        <div >Energia [Kw-h / período]</div>
+                                    </td>
+                                    <td colspan="1" style="width: 17%; text-align:center;">
+                                        <div >Costo [usd / dia]</div>
+                                    </td>
+                                    <td colspan="1" style="width: 16%; text-align:center;">
+                                        <div >Energia [Kw-h / período]</div>
+                                    </td>
+                                    <td colspan="1" style="width: 17%; text-align:center;">
+                                        <div >Costo [usd / mes]</div>
+                                    </td>
+                                    <td colspan="1" style="width: 17%; text-align:center;">
+                                        <div > % </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <label>Pérdidas Comerciales</label>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.perdidas_comerciales_dias"/>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.perdidas_comerciales_dias_costo" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.perdidas_comerciales_mes" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.perdidas_comerciales_mes_costo" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+
+                                            <span t-esc="round(o.perdidas_comerciales_porcentaje,2)" /> %
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <label  for="o_field_input_274" >Energía Registrada</label>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.energia_registrada_dias">334,84</span>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.energia_registrada_dias_costo" >33,48</span>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.energia_registrada_mes" >3.348,40</span>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.energia_registrada_mes_costo" >334,84</span>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+
+                                            <span t-esc="round(o.energia_registrada_porcentaje,2)" /> %
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <label  for="o_field_input_275" >Energía Entregada</label>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.energia_entregada_dias">428,00</span>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.energia_entregada_dias_costo" >42,80</span>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.energia_entregada_mes" >4.280,00</span>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.energia_entregada_mes_costo" >428,00</span>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+
+                                            <span t-esc="round(o.energia_entregada_porcentaje,2)" /> %
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page">
+
+                        <table class="table" style="margin-bottom: 0px; margin-top: 10px">
+                            <tbody>
+                                <tr></tr>
+                                <tr>
+                                    <td colspan="6" style="width: 100%; text-align:center;">
+                                        <div ><h3>Valores Consumos Registrados de la Red</h3></div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <table class="table" style="margin-bottom: 0px;">
+                            <tbody>
+                                <tr>
+                                    <td colspan="1" style="width: 20%; text-align:center;">
+                                        <div >Parámetro</div>
+                                    </td>
+                                    <td colspan="1" style="width: 20%; text-align:center;">
+                                        <div >Cantidad</div>
+                                    </td>
+                                    <td colspan="1" style="width: 20%; text-align:center;">
+                                        <div > ( Kw ) Consumo </div>
+                                    </td>
+                                    <td colspan="1" style="width: 20%; text-align:center;">
+                                        <div > ( $ ) Costo </div>
+                                    </td>
+                                    <td colspan="2" style="width: 20%; text-align:center;">
+                                        <div > ( % ) Porcentaje </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+                        <table class="table" style="margin-bottom: 0px;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 20%; text-align:center;">
+                                        <label >Clientes</label>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.cant_clientes"/>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.consumo_clientes" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.costo_clientes" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span t-esc="round(o.porce_clientes,2)"/> %
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%; text-align:center;">
+                                        <label >Lámparas</label>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.cant_luminarias"/>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.consumo_luminarias" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.costo_luminarias" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-esc="round(o.porce_luminarias,2)" /> %
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <label >Semáforos</label>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.cant_semaforos"/>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.consumo_semaforos" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.costo_semaforos" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-esc="round(o.porce_semaforos,2)" /> %
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <label  for="o_field_input_279" >Cámaras</label>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.cant_camaras"/>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.consumo_camaras" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.costo_camaras" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-esc="round(o.porce2_camaras,2)" /> %
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <label  >Otros Consumidores</label>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.cant_otros"/>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.consumo_otros" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.costo_otros" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-esc="round(o.porce_otros,2)" />
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <label  for="o_field_input_281" >Total de Consumidores</label>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.cant_consumidores"/>
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.consumo_consumidores" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-field="o.costo_consumidores" />
+                                    </td>
+                                    <td style="width: 20%; text-align:center;">
+                                        <span  t-esc="round(o.porce_consumidores,2)" /> %
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                        <table class="table" style="margin-bottom: 0px;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 50%; margin: auto; text-align:center;">
+                                        <img style="width: 100%;" t-att-src="o.chart_img_general()"/>
+                                    </td>
+                                    <td style="width: 50%; margin: auto; text-align:center;">
+                                        <img style="width: 100%;" t-att-src="o.chart_img_especifico()"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%; margin: auto; text-align:center;">
+                                        <img style="width: 100%;" t-att-src="o.chart_img_general2()"/>
+                                    </td>
+                                    <td style="width: 50%; margin: auto; text-align:center;">
+                                        <img style="width: 100%;" t-att-src="o.chart_img_especifico2()"/>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+
+                        
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

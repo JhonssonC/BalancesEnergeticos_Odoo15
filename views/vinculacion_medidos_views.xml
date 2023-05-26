@@ -2,9 +2,9 @@
 <odoo>
 
     <!-- Vista personalizada de Formulario -->
-    <record id="vinculacion_model_view_form" model="ir.ui.view">
-        <field name="name">vinculacion.form</field>
-        <field name="model">vinculacion</field>
+    <record id="vinculacion_medido_model_view_form" model="ir.ui.view">
+        <field name="name">vinculacion.medido.form</field>
+        <field name="model">vinculacion.medido</field>
         <field name="arch" type="xml">
 
             <form string="Vinculación">
@@ -14,14 +14,22 @@
                             <page string="Vinculación">
                                 <group>
 
-                                    <field name="id"/>
-                                    <field name="fecha_hora"/>
+                                    <field name="ides_v"/>
+                                    <field name="fecha_hora_inicial"/>
+                                    <field name="fecha_hora_final"/>
                                     <field name="balance_energetico_id"/>
-                                    <field name="tipo_vinculacion_id"/>
+
                                     <field name="consumidor_id"/>
-                                    <field name="tipo_consumidor" attrs="{'invisible': 1}" />
-                                    <field name="lectura" attrs="{'invisible': [('tipo_consumidor', 'in', (-1,5,6,7,8,9,11))]}"/>
+                                    <field name="consumidor_codigo"/>
+                                    <field name="consumidor_cant"/>
                                     
+                                    <field name="tipo_consumidor" attrs="{'invisible': 1}" />
+                                    <field name="lectura_final" attrs="{'invisible': [('tipo_consumidor', 'in', (-1,5,6,7,8,9,11))]}"/>
+                                    <field name="lectura_inicial" attrs="{'invisible': [('tipo_consumidor', 'in', (-1,5,6,7,8,9,11))]}"/>
+                                    
+                                    <field name="consumo" attrs="{'invisible': [('tipo_consumidor', 'in', (-1,5,6,7,8,9,11))]}"/>
+                                    
+
                                     <field name="voltaje" attrs="{'invisible': [('tipo_consumidor', 'in', (-1,1,2,3,4))]}"/>
 
                                     <field name="carga_l1" attrs="{'invisible': [('tipo_consumidor', 'in', (-1,1,2,3,4,10))]}"/>
@@ -33,7 +41,7 @@
                                     
                                     <field name="observacion"/>
 
-                                    <field name="active" attrs="{'invisible': 1}"/>
+                                    <!-- <field name="active" attrs="{'invisible': 1}"/> -->
 
                                 </group>
                             </page>
@@ -48,27 +56,32 @@
     
 
     <!-- Vista personalizada de arbol inicial -->
-    <record id="vinculacion_model_view_tree" model="ir.ui.view">
-        <field name="name">vinculacion.tree</field> 
-        <field name="model">vinculacion</field> 
+    <record id="vinculacion_medido_model_view_tree" model="ir.ui.view">
+        <field name="name">vinculacion.medido.tree</field> 
+        <field name="model">vinculacion.medido</field> 
         <field name="arch" type="xml">
-            <tree string="Vinculación">
-                <field name="id"/>
-                <field name="tipo_vinculacion_id"/>
+            <tree limit="50" string="Consumo Medido">
+                <field name="ides_v"/>
+                <field name="fecha_hora_inicial"/>
+                <field name="fecha_hora_final"/>
+                <field name="consumidor_codigo"/>
+                <field name="consumidor_cant"/>
                 <field name="consumidor_id"/>
-                <field name="balance_energetico_id"/>
-                <field name="active"/>
+                <field name="lectura_final"/>
+                <field name="lectura_inicial"/>
+                <field name="consumo" sum="Total"/>
+                <!-- <field name="active"/> -->
             </tree>
         </field>
     </record>
 
     
-    <!-- Vista personalizada Modulo Accion -->
+    <!-- Vista personalizada Modulo Accion 
     <record id="vinculacion_model_action" model="ir.actions.act_window"> 
         <field name="name">Vinculacion (Levantamiento por consumidor de red)</field>
         <field name="res_model">vinculacion</field> 
         <field name="view_mode">tree,form</field>
     </record>
-   
+   -->
 
 </odoo>

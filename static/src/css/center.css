@@ -1,0 +1,46 @@
+.o_form_view .o_form_label {
+    margin: 0;
+    padding-top: 10px;
+}
+
+.o_form_label{
+    padding-top: 10px;
+}
+
+.o_td_label{
+    text-align: center;
+}
+
+table.o_group.o_inner_group tbody td{
+    text-align: center;
+}
+
+table.o_group.o_inner_group tbody td span{
+    padding-top: 10px;
+}
+
+/* .text-center{
+    horizontal-align: middle; 
+    display: block; 
+    text-align: center; 
+    margin:auto;
+}
+
+
+.text-danger{
+    color: black;
+}
+
+td > span.text-danger{
+    background-color: #d23f3a;
+    color: black;
+}
+
+
+.text-warning{
+    color: black;
+}
+td > span.text-danger{
+    background-color: #F4D03F;
+    color: black;
+} */

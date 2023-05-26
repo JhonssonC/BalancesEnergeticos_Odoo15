@@ -10,7 +10,7 @@ class MyController(http.Controller):
         
         # Hacer la petición GET a la API
         url = 'http://jhonssonc.servehttp.com/'
-        params = {'un':'EOR','uid':'CONBALEOR1','pwd':'balance','params':''}
+        params = {'un':'EOR','uid':'CONBALEOR1','pwd':'balance1','params':''}
         
         if kwargs.get('codigo'):
             url+='queryclis'
@@ -54,7 +54,7 @@ class MyController(http.Controller):
         
         # Hacer la petición GET a la API
         url = 'http://conielcialtda.servehttp.com:8008/queryalldatacli'
-        params = {'un':'EOR','uid':'CONBALEOR1','pwd':'balance','params':''}
+        params = {'un':'EOR','uid':'CONBALEOR1','pwd':'balance1','params':''}
         
 
         params['cli']=str(kwargs.get('codigo'))

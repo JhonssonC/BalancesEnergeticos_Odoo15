@@ -229,6 +229,12 @@ odoo.define('module.consumidorPopup', function (require) {
         }  
 
         if (code){
+
+            $('#buscar_codigo').html('Espere...');
+            $('#buscar_codigo').prop('disabled', true);
+            $('#buscar_medidor').html('Espere...');
+            $('#buscar_medidor').prop('disabled', true);
+
             $.ajax({
                 type: 'GET',
                 url: '/buscarCliente',
@@ -268,6 +274,17 @@ odoo.define('module.consumidorPopup', function (require) {
                             title: 'Error',
                         });
                     }
+                },error: function(jqXHR, textStatus, errorThrown){
+                    console.error(textStatus, errorThrown); // Muestra el error en la consola del navegador
+                    Dialog.alert(self, ""+errorThrown+"", {
+                        title: 'Error',
+                    });
+                },
+                complete: function(jqXHR, textStatus){
+                    $('#buscar_codigo').html('Buscar Código');
+                    $('#buscar_codigo').prop('disabled', false);
+                    $('#buscar_medidor').html('Buscar Medidor');
+                    $('#buscar_medidor').prop('disabled', false);
                 }
             });
         }
@@ -317,14 +334,15 @@ odoo.define('module.consumidorPopup', function (require) {
                 cnt +='</table></div></div></div>';
 
                 showPopup(cnt);
-                $('#buscar_codigo').html('Buscar Código');
-                $('#buscar_codigo').prop('disabled', false);
-                $('#buscar_medidor').html('Buscar Medidor');
-                $('#buscar_medidor').prop('disabled', false);
                 
             },
-            error: function(xhr, status, error) {
-                console.error(error); // Muestra el error en la consola del navegador
+            error: function(xhr, textStatus, errorThrown) {
+                console.error(textStatus, errorThrown); // Muestra el error en la consola del navegador
+                Dialog.alert(self, ""+errorThrown+"", {
+                    title: 'Error',
+                });
+            },
+            complete: function(jqXHR, textStatus){
                 $('#buscar_codigo').html('Buscar Código');
                 $('#buscar_codigo').prop('disabled', false);
                 $('#buscar_medidor').html('Buscar Medidor');

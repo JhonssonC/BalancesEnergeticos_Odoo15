@@ -61,3 +61,35 @@ class vinculacion(models.Model):
             args += ['|', '|' , ('tipo_vinculacion_id', operator, name), ('consumidor_id', operator, name), ('balance_energetico_id', operator, name)]
         #print (self, name, args, operator, limit, name_get_uid)
         return self._search(args, limit=limit, access_rights_uid=name_get_uid)
+    
+    
+    
+    @api.model
+    def load(self, fields, data):
+        
+        trow = fields.copy()
+        for j, d in enumerate(trow):
+            trow[j] = None
+
+        data2 = []
+        for idx, row in enumerate(data):
+            if 'fotos' in fields:
+                indice = fields.index('fotos')
+                print(indice)
+                rango = str(row[indice]).split('-')
+                if len(rango)>1:
+                    for i in range(int(rango[0]), int(rango[1])+1):
+                        data2.append(row.copy())
+                        tmprow = trow.copy()
+                        tmprow[indice] = i
+                        data2.append(tmprow)
+                else:
+                    data2.append(row)
+            else:
+                print('El elemento no está en la lista')
+                
+        #print('Datos de importación:', self, fields, data)
+
+        res = super(vinculacion, self).load(fields, data)
+        print('Proceso de carga finalizado')
+        return res 

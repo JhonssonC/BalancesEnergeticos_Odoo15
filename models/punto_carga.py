@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import fields, models, api
 
 
 class punto_carga(models.Model):
@@ -22,3 +22,17 @@ class punto_carga(models.Model):
             result.append((rec.id, name))
         
         return result
+    
+
+    @api.model
+    def search(self, args, offset=0, limit=None, order=None, count=False):
+        print ('search', args)
+        if args:
+            for arg in args:
+                if arg[0] == '&' and len(arg) == 3:
+                    campo = arg[0][0]
+                    valor = arg[2].lower()
+                    new_arg = '|', ('id', 'ilike', valor), ('coord.id', 'ilike', valor)
+                    args[args.index(arg)] = new_arg
+                    break
+        return super(punto_carga, self).search(args, offset=offset, limit=limit, order=order, count=count)

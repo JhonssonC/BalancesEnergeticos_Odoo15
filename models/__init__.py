@@ -12,3 +12,5 @@ from . import tipo_consumidor
 from . import tipo_vinculacion
 from . import transformador
 from . import vinculacion
+from . import vinculacion_medido
+from . import vinculacion_no_medido

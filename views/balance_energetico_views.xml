@@ -8,38 +8,348 @@
         <field name="arch" type="xml">
 
             <form string="Balance Energético">
+                <!-- <header>
+                    <button name="action_report" type="object"
+                    string="Imprimir Reporte"/>
+                </header> -->
+
                 <sheet>
-                    <group>
-                        <group>
 
-                            <notebook>
-                                <page string="Balance Energético">
-                                    <group>
+                    <group col="4">
 
-                                        <field name="id"/>
-                                        <field name="red_id"/>
-                                        <field name="nombre"/>
-                                        <field name="consumo_consumidores"/>
-                                        <field name="consumo_totalizador"/>
-                                        <field name="eficacia"/>
-                                        <field name="error"/>
-                                        <field name="active"/>
+                        <group string="Balance Energético" colspan="4" col="4"/>
 
-                                    </group>
-                                </page>
-                            </notebook>
-
+                        <group colspan="4" col="4">
+                            <field name="nombre"/>
+                            <field name="id"/>
+                            <field name="red_id" colspan="4"/>
+                            <field name="consumo_consumidores"/>
+                            <field name="consumo_totalizador"/>
                         </group>
+
+                        <group name="red" colspan="4" col="4" style="background-color:#FADBD8" attrs="{'invisible': [('color','in', ('yellow','green'))]}">
+                            <field name="eficacia" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
+                            <field name="error" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
+                        </group>
+                        
+                        <group name="yellow" colspan="4" col="4" style="background-color:#FCF3CF" attrs="{'invisible': [('color','in', ('red','green'))]}">
+                            <field name="eficacia" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
+                            <field name="error" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
+                        </group>
+                        
+                        <group name="green" colspan="4" col="4" style="background-color:#D1F2EB" attrs="{'invisible': [('color','in', ('yellow','red'))]}">
+                            <field name="eficacia" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
+                            <field name="error" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
+                        </group>
+
+                        <field name="color" invisible="1"/>
 
                     </group>
 
+                    <notebook>
+                        <page string="Datos Generales">
+
+                            <group string="Inspecciones de la Red" col="4">
+                                <label for="red_id_trafo_id"/>
+                                <label for="fecha_inicial"/>
+                                <label for="fecha_final"/>
+                                <label for="costo_kwh"/>
+                                
+                                <field name="red_id_trafo_id" readonly="1" nolabel="1"/>
+                                <field name="fecha_inicial" readonly="1" nolabel="1"/>
+                                <field name="fecha_final" readonly="1" nolabel="1"/>
+                                <field name="costo_kwh" widget="monetary" nolabel="1"/>
+                            </group>
+
+
+                            <group string="Localización / Características" col="4">
+
+                                <field name="red_id_sector" readonly="1"/>
+                                <field name="red_id_id" readonly="1" />
+                                <field name="red_id_trafo_codigo" readonly="1" />
+                                <field name="red_id_trafo_capacidad" readonly="1" />
+
+                                <label for="red_id_trafo_x" colspan="2"/>
+                                <label for="red_id_trafo_y" colspan="2"/>
+                                
+                                <field name="red_id_trafo_x" readonly="1" nolabel="1" colspan="2"/>
+                                <field name="red_id_trafo_y" nolabel="1" colspan="2"/>
+
+                            </group>
+
+
+                            <group col="6">
+
+                                <group string="Resumen de Resultados de Balance" colspan="6" col="6" />
+
+                                <group string="" col="1"/>
+                                <group string="Real" colspan="2" col="1"/>
+                                <group string="Proyeccion ( mes )" colspan="2" col="1"/>
+                                <group string="" col="1"/>
+
+                                <group string="Parámetro" col="1"/>
+                                <group string="Energia [Kw-h / período]"  col="1"/>
+                                <group string="Costo [usd / dia]" col="1"/>
+                                <group string="Energia [Kw-h / período]"  col="1"/>
+                                <group string="Costo [usd / mes]" col="1"/>
+                                <group string=" % " col="1"/>
+
+                                <group colspan="6" col="6">
+                                    <field name="perdidas_comerciales_dias"/>
+                                    <field name="perdidas_comerciales_dias_costo" widget="monetary" readonly="1" nolabel="1"/>
+                                    <field name="perdidas_comerciales_mes" readonly="1" nolabel="1"/>
+                                    <field name="perdidas_comerciales_mes_costo" widget="monetary" readonly="1" nolabel="1"/>
+                                    <field name="perdidas_comerciales_porcentaje" string="" widget="percentpie" digits="[2,2]" readonly="1" nolabel="1"/>
+
+                                    <field name="energia_registrada_dias"/>
+                                    <field name="energia_registrada_dias_costo" widget="monetary" readonly="1" nolabel="1"/>
+                                    <field name="energia_registrada_mes" readonly="1" nolabel="1"/>
+                                    <field name="energia_registrada_mes_costo" widget="monetary" readonly="1" nolabel="1"/>
+                                    <field name="energia_registrada_porcentaje" string="" widget="percentpie" digits="[2,2]" readonly="1" nolabel="1"/>    
+
+                                    <field name="energia_entregada_dias"/>
+                                    <field name="energia_entregada_dias_costo" widget="monetary" readonly="1" nolabel="1"/>
+                                    <field name="energia_entregada_mes" readonly="1" nolabel="1"/>
+                                    <field name="energia_entregada_mes_costo" widget="monetary" readonly="1" nolabel="1"/>
+                                    <field name="energia_entregada_porcentaje" string="" widget="percentpie" digits="[2,2]" readonly="1" nolabel="1"/>
+                                </group>
+
+                            </group>
+
+
+                            <group col="6">
+                                
+                                <group string="Valores Consumos Registrados de la Red" colspan="6" col="6"/>
+                                
+                                <group string="Parámetro" col="1"/>
+                                <group string="Cantidad" col="1"/>
+                                <group string=" ( Kw ) Consumo" col="1"/>
+                                <group string=" ( $ ) Costo" col="1"/>
+                                <group string=" ( % ) Porcentaje" colspan="2" col="1"/>
+
+                                <group colspan="6" col="6">
+                                    
+                                    <field name="cant_clientes"/>
+                                    <field name="consumo_clientes" readonly="1" nolabel="1"/>
+                                    <field name="costo_clientes" readonly="1" nolabel="1" widget="monetary"/>
+                                    <field name="porce_clientes" readonly="1" nolabel="1" widget="progressbar"/>
+                                    <field name="porce2_clientes" readonly="1" nolabel="1" widget="percentage"/>
+                                    
+                                    <field name="cant_luminarias"/>
+                                    <field name="consumo_luminarias" readonly="1" nolabel="1"/>
+                                    <field name="costo_luminarias" readonly="1" nolabel="1" widget="monetary"/>
+                                    <field name="porce_luminarias" readonly="1" nolabel="1" widget="progressbar"/>
+                                    <field name="porce2_luminarias" readonly="1" nolabel="1" widget="percentage"/>
+
+                                    <field name="cant_semaforos"/>
+                                    <field name="consumo_semaforos" readonly="1" nolabel="1"/>
+                                    <field name="costo_semaforos" readonly="1" nolabel="1" widget="monetary"/>
+                                    <field name="porce_semaforos" readonly="1" nolabel="1" widget="progressbar"/>
+                                    <field name="porce2_semaforos" readonly="1" nolabel="1" widget="percentage"/>
+
+                                    <field name="cant_camaras"/>
+                                    <field name="consumo_camaras" readonly="1" nolabel="1"/>
+                                    <field name="costo_camaras" readonly="1" nolabel="1" widget="monetary"/>
+                                    <field name="porce_camaras" readonly="1" nolabel="1" widget="progressbar"/>
+                                    <field name="porce2_camaras" readonly="1" nolabel="1" widget="percentage"/>
+
+                                    <field name="cant_otros"/>
+                                    <field name="consumo_otros" readonly="1" nolabel="1"/>
+                                    <field name="costo_otros" readonly="1" nolabel="1" widget="monetary"/>
+                                    <field name="porce_otros" readonly="1" nolabel="1" widget="progressbar"/>
+                                    <field name="porce2_otros" readonly="1" nolabel="1" widget="percentage"/>
+
+                                    <field name="cant_consumidores"/>
+                                    <field name="consumo_consumidores" readonly="1" nolabel="1"/>
+                                    <field name="costo_consumidores" readonly="1" nolabel="1" widget="monetary"/>
+                                    <field name="porce_consumidores" readonly="1" nolabel="1" widget="progressbar"/>
+                                    <field name="porce2_consumidores" readonly="1" nolabel="1" widget="percentage"/>
+
+                                </group>
+                                
+                            </group>
+                            
+
+                            <group> 
+                                <!-- <field name="chart_data_general" widget="dashboard_graph" options="{'type': 'line'}"/> -->
+                            </group> 
+                            
+
+
+                        </page>
+                            
+                        <page string="Detalles">
+
+                                <group col="6">
+
+                                    <h3 colspan="6"> Totalizador </h3>
+
+                                    <field name="consumo_totalizador" class="oe_left"/>
+                                    <field name="consumidores_totaliza" colspan="6" nolabel="1"/>
+                                
+                                </group>
+
+
+
+                                <group col="6">
+
+                                    <h3 colspan="6"> Consumo Medido (Meidores) </h3>
+
+                                    <field name="consumo_clientes" class="oe_left"/>
+                                    <field name="consumidores_clientes" colspan="6" nolabel="1"/>
+
+                                </group>
+
+
+
+                                <group col="4" style="display: table-cell; text-align: center; vertical-align: middle;">
+                                    <group colspan="4">
+                                        <h3> Alumbrado Publico </h3>
+                                    </group>
+
+                                    <group colspan="4" col="6">
+                                        <field name="consumo_luminarias" class="oe_left"/>
+                                    </group>
+
+                                    <group colspan="2" col="1">
+                                        <h4> Inicial </h4>
+                                        <field name="consumidores_no_medidos_lum_ini" nolabel="1"/>
+                                    </group>
+
+                                    <group colspan="2" col="1">
+                                        <h4> Posterior </h4>
+                                        <field name="consumidores_no_medidos_lum_fin" nolabel="1"/>
+                                    </group>
+                                </group>
+
+                                <div style="display:block;"></div>
+
+                                <group col="4" style="display: table-cell; text-align: center; vertical-align: middle;">
+
+                                    <group colspan="4">
+                                        <h3> Semáforos </h3>
+                                    </group>
+
+                                    <group colspan="4" col="6">
+                                        <field name="consumo_semaforos" class="oe_left"/>
+                                    </group>
+
+                                    <group colspan="2" col="1">
+                                        <h4> Inicial </h4>
+                                        <field name="consumidores_no_medidos_sem_ini" nolabel="1"/>
+                                    </group>
+
+                                    <group colspan="2" col="1">
+                                        <h4> Posterior </h4>
+                                        <field name="consumidores_no_medidos_sem_fin" nolabel="1"/>
+                                    </group>
+
+                                </group>
+
+                                <div style="display:block;"></div>
+
+                                <group col="4" style="display: table-cell; text-align: center; vertical-align: middle;">
+
+                                    <group colspan="4">
+                                        <h3> Cámaras </h3>
+                                    </group>
+
+                                    <group colspan="4" col="6">
+                                        <field name="consumo_camaras" class="oe_left"/>
+                                    </group>
+
+                                    <group colspan="2" col="1">
+                                        <h4> Inicial </h4>
+                                        <field name="consumidores_no_medidos_cam_ini" nolabel="1"/>
+                                    </group>
+
+                                    <group colspan="2" col="1">
+                                        <h4> Posterior </h4>
+                                        <field name="consumidores_no_medidos_cam_fin" nolabel="1"/>
+                                    </group>
+
+                                </group>
+
+                                <div style="display:block;"></div>
+
+                                <group col="4" style="display: table-cell; text-align: center; vertical-align: middle;">
+
+                                    <group colspan="4">
+                                        <h3> Servicios Convenidos </h3>
+                                    </group>
+
+                                    <group colspan="4" col="6">
+                                        <field name="consumo_otros" class="oe_left"/>
+                                    </group>
+
+                                    <group colspan="2" col="1">
+                                        <h4> Inicial </h4>
+                                        <field name="consumidores_no_medidos_otr_ini" nolabel="1"/>
+                                    </group>
+
+                                    <group colspan="2" col="1">
+                                        <h4> Posterior </h4>
+                                        <field name="consumidores_no_medidos_otr_fin" nolabel="1"/>
+                                    </group>
+
+                                </group>
+
+                                <div style="display:block;"></div>
+                                
+                                <group>
+                                
+                                    <group colspan="2">
+                                        <h3> Todas las Vinculaciones </h3>
+                                    </group>
+
+                                    <field name="detalle_vinculaciones"/>
+                                
+                                </group>
+
+                        </page>
+
+                        <page string="Graficas">
+
+                            <group string="Valores Consumos Registrados de la Red" col="2">
+                                <div style="width: 50%; margin: auto;">
+                                    <canvas id="general"></canvas>
+                                </div>
+                                <div style="width: 50%; margin: auto;">
+                                    <canvas id="generalkw"></canvas>
+                                </div>
+                                <div style="width: 50%; margin: auto;">
+                                    <canvas id="especifico"></canvas>
+                                </div>
+                                <div style="width: 50%; margin: auto;">
+                                    <canvas id="enkw"></canvas>
+                                </div>
+                            </group>
+
+                        </page>
+
+                    </notebook>
+
                 </sheet>
+                <script src="/balancesEnergeticos/static/src/js/graficas.js"/>
             </form>
 
         </field>
 
     </record>
     
+    <!-- Vista personalizada de grafico inicial -->
+    <record id="balance_energetico_model_view_graph" model="ir.ui.view">
+        <field name="name">balance.energetico.graph</field> 
+        <field name="model">balance.energetico</field> 
+        <field name="arch" type="xml">
+            <graph string="Grafico de Balance Energético" type="bar"> 
+                <field name="id"/>
+                <field name="red_id"/>
+                <field name="error" type="measure"/>
+                <field name="eficacia" type="measure"/>
+            </graph>
+        </field>
+    </record>
 
     <!-- Vista personalizada de arbol inicial -->
     <record id="balance_energetico_model_view_tree" model="ir.ui.view">
@@ -50,18 +360,132 @@
                 <field name="id"/>
                 <field name="red_id"/>
                 <field name="nombre"/>
-                <field name="error"/>
-                <field name="active"/>
+                <field name="consumo_consumidores"/>
+                <field name="consumo_diferencia" string="Energía Perdida"/>
+                <field name="eficacia" digits="[2,2]" widget="percentage"/>
+                <field name="error" digits="[2,2]" widget="percentage"/>
             </tree>
         </field>
     </record>
+
+    <!-- Vista personalizada de kanban inicial -->
+    <record id="mbalance_energetico_model_view_kanban" model="ir.ui.view">
+    <field name="name">balance.energetico.kanban</field>
+    <field name="model">balance.energetico</field>
+    <field name="arch" type="xml">
+        <kanban default_order="consumo_consumidores desc" default_group_by="nombre" class="o_kanban_small_column o_kanban_project_tasks" js_class="project_kanban">
+            <progressbar field="color" colors='{"green": "success", "red": "danger", "yellow": "warning"}'/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_content">
+                        <div class="oe_kanban_primary">
+                            <div class="oe_kanban_title">
+                                <h3>
+                                <field name="id"/>
+                                </h3>
+                                <field name="nombre"/>
+                            </div>
+                            <div class="oe_kanban_subtitle">
+                                <field name="red_id"/>
+                            </div>
+                        </div>
+                        <div class="oe_kanban_secondary">
+
+                            <h4>
+                                Consumos Medidos: 
+                            </h4>
+                            <h5>
+                                Clientes: 
+                                <field name="consumo_clientes" readonly="1" nolabel="1"/>
+                            </h5>
+                            <h5>
+                                Luminarias: 
+                                <field name="consumo_luminarias" readonly="1" nolabel="1"/>
+                            </h5>
+                            <h5>
+                                Semaforos: 
+                                <field name="consumo_semaforos" readonly="1" nolabel="1"/>
+                            </h5>
+                            <h5>
+                                Camaras: 
+                                <field name="consumo_camaras" readonly="1" nolabel="1"/>
+                            </h5>
+                            <h5>
+                                Servicios Convenidos: 
+                                <field name="consumo_otros" readonly="1" nolabel="1"/>
+                            </h5>
+                            <h5>
+                                Total Consumos: 
+                                <field name="consumo_consumidores"/>
+                            </h5>
+                            <h5>
+                                Consumo Registrado por Totalizador: 
+                                <field name="consumo_totalizador"/>
+                            </h5>
+                            
+                            <group name="red" colspan="4" col="4" style="background-color:#FADBD8" attrs="{'invisible': [('color','in', ('yellow','green'))]}">
+                                <h5>
+                                    Eficacia: 
+                                </h5>
+                                    <field name="eficacia" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
+                                
+                                <h5>
+                                    Error: 
+                                </h5>
+                                    <field name="error" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
+                                
+                            </group>
+                            
+                            <group name="yellow" colspan="4" col="4" style="background-color:#FCF3CF" attrs="{'invisible': [('color','in', ('red','green'))]}">
+                                 <h5>
+                                    Eficacia: 
+                                </h5>
+                                    <field name="eficacia" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
+                                
+                                <h5>
+                                    Error: 
+                                </h5>
+                                    <field name="error" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
+                            </group>
+                            
+                            <group name="green" colspan="4" col="4" style="background-color:#D1F2EB" attrs="{'invisible': [('color','in', ('yellow','red'))]}">
+                                 <h5>
+                                    Eficacia: 
+                                </h5>
+                                    <field name="eficacia" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
+                                
+                                <h5>
+                                    Error: 
+                                </h5>
+                                    <field name="error" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
+                            </group>
+
+                            
+
+                            <field name="color" invisible="1"/>
+
+                            <!-- <t t-call="JournalBodyGraph"/> -->
+
+
+                        </div>
+                    </div>
+                </t>
+
+                <t t-name="JournalBodyGraph">
+                    <!-- <field name="chart_data_general" widget="dashboard_graph"/> -->
+                </t>
+                
+            </templates>
+        </kanban>
+    </field>
+</record>
 
     
     <!-- Vista personalizada Modulo Accion -->
     <record id="balance_energetico_model_action" model="ir.actions.act_window"> <!-- id IGUAL A MENU EN acciones_menu_views.xml -->
         <field name="name">Balance Energético</field> <!-- name ES DESCRIPTIVO, ES LO QUE APARECERA EN WEB -->
         <field name="res_model">balance.energetico</field> <!-- NOMBRE DEL MODELO EN models/acciones_property.py - nombre del modelo  -->
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,graph,kanban</field>
     </record>
    
 

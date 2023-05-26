@@ -75,6 +75,7 @@
         <field name="model">coordenada</field> 
         <field name="arch" type="xml">
             <tree string="coordenada"> 
+                <field name="id"/>
                 <field name="coord_x"/>
                 <field name="coord_y"/>
                 <field name="latitud"/>
