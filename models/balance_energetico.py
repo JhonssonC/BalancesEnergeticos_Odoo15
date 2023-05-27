@@ -172,14 +172,19 @@ class balance_energetico(models.Model):
         
         for balance in self:
             
-            related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "<","5"), ("balance_energetico_id.id","=",str(balance.id))])
-            
-            #fechas del balance
-            fechas = list(set([cli.fecha_hora.date() for cli in related_recordset]))
-            
-            print("+++++++++++++++++++++++++")
-            print ('FECHAS_MED', fechas)
-            print("+++++++++++++++++++++++++")
+            try:
+                related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "<","5"), ("balance_energetico_id.id","=",str(balance.id))])
+                
+                #fechas del balance
+                fechas = list(set([cli.fecha_hora.date() for cli in related_recordset]))
+                
+                print("+++++++++++++++++++++++++")
+                print ('FECHAS_MED', fechas)
+                print("+++++++++++++++++++++++++")
+            except Exception as err:
+                print (err)
+                related_recordset=[]
+                fechas = []
             
             if len(related_recordset) > 0 and len(fechas) == 2:
             
@@ -266,16 +271,21 @@ class balance_energetico(models.Model):
         
         for balance in self:
             
-            fechas=[]
-            
-            related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "=","10"), ("balance_energetico_id.id","=",str(balance.id))])
-            
-            #fechas del balance
-            fechas = list(set([cli.fecha_hora.date() for cli in related_recordset]))
-            
-            print("+++++++++++++++++++++++++")
-            print ('FECHAS_TOT', fechas)
-            print("+++++++++++++++++++++++++")
+            try:
+                fechas=[]
+                
+                related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "=","10"), ("balance_energetico_id.id","=",str(balance.id))])
+                
+                #fechas del balance
+                fechas = list(set([cli.fecha_hora.date() for cli in related_recordset]))
+                
+                print("+++++++++++++++++++++++++")
+                print ('FECHAS_TOT', fechas)
+                print("+++++++++++++++++++++++++")
+            except Exception as err:
+                print (err)
+                related_recordset=[]
+                fechas = []
             
             if len(related_recordset) > 0 and len(fechas) == 2:
             
@@ -363,15 +373,19 @@ class balance_energetico(models.Model):
         
         for balance in self:
             
-            
-            related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "=","5"), ("balance_energetico_id.id","=",str(self.id))])
-            
-            #fechas del balance
-            fechas = list(set([cli.fecha_hora.date() for cli in related_recordset]))
-            
-            print("+++++++++++++++++++++++++")
-            print ('FECHAS_LUM', fechas)
-            print("+++++++++++++++++++++++++")
+            try:
+                related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "=","5"), ("balance_energetico_id.id","=",str(self.id))])
+                
+                #fechas del balance
+                fechas = list(set([cli.fecha_hora.date() for cli in related_recordset]))
+                
+                print("+++++++++++++++++++++++++")
+                print ('FECHAS_LUM', fechas)
+                print("+++++++++++++++++++++++++")
+            except Exception as err:
+                print (err)
+                related_recordset=[]
+                fechas = []
             
             if len(related_recordset) > 0 and len(fechas) == 2:
             
@@ -470,14 +484,19 @@ class balance_energetico(models.Model):
         
         for balance in self:
             
-            related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "in", [6,7,8]), ("balance_energetico_id.id","=",str(self.id))])
-            
-            #fechas del balance    
-            fechas = list(set([cli.fecha_hora.date() for cli in related_recordset]))
-            
-            print("+++++++++++++++++++++++++")
-            print ('FECHAS_SEM', fechas)
-            print("+++++++++++++++++++++++++")
+            try:
+                related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "in", [6,7,8]), ("balance_energetico_id.id","=",str(self.id))])
+                
+                #fechas del balance    
+                fechas = list(set([cli.fecha_hora.date() for cli in related_recordset]))
+                
+                print("+++++++++++++++++++++++++")
+                print ('FECHAS_SEM', fechas)
+                print("+++++++++++++++++++++++++")
+            except Exception as err:
+                print (err)
+                related_recordset=[]
+                fechas = []
             
             if len(related_recordset) > 0 and len(fechas) == 2:
             
@@ -583,14 +602,19 @@ class balance_energetico(models.Model):
         
         for balance in self:
             
-            related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "=","9"), ("balance_energetico_id.id","=",str(self.id))])
-            
-            #fechas del balance
-            fechas = list(set([cli.fecha_hora.date() for cli in related_recordset]))
-            
-            print("+++++++++++++++++++++++++")
-            print ('FECHAS_CAM', fechas)
-            print("+++++++++++++++++++++++++")
+            try:
+                related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "=","9"), ("balance_energetico_id.id","=",str(self.id))])
+                
+                #fechas del balance
+                fechas = list(set([cli.fecha_hora.date() for cli in related_recordset]))
+                
+                print("+++++++++++++++++++++++++")
+                print ('FECHAS_CAM', fechas)
+                print("+++++++++++++++++++++++++")
+            except Exception as err:
+                print (err)
+                related_recordset=[]
+                fechas = []
             
             if len(related_recordset) > 0 and len(fechas) == 2:
             
@@ -692,14 +716,19 @@ class balance_energetico(models.Model):
         
         for balance in self:
             
-            related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "=","11"), ("balance_energetico_id.id","=",str(self.id))])
-            
-            #fechas del balance
-            fechas = list(set([cli.fecha_hora.date() for cli in related_recordset]))
-            
-            print("+++++++++++++++++++++++++")
-            print ('FECHAS_OTR', fechas)
-            print("+++++++++++++++++++++++++")
+            try:
+                related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "=","11"), ("balance_energetico_id.id","=",str(self.id))])
+                
+                #fechas del balance
+                fechas = list(set([cli.fecha_hora.date() for cli in related_recordset]))
+                
+                print("+++++++++++++++++++++++++")
+                print ('FECHAS_OTR', fechas)
+                print("+++++++++++++++++++++++++")
+            except Exception as err:
+                print (err)
+                related_recordset=[]
+                fechas = []
             
             if len(related_recordset) > 0 and len(fechas) == 2:
                 
@@ -815,7 +844,7 @@ class balance_energetico(models.Model):
     @api.depends('red_id')
     def _red_id_sector(self):
         for record in self:
-            record.red_id_sector = record.red_id.canton_id.nombre + " / " +record.red_id.provincia_id.nombre
+            record.red_id_sector = str(record.red_id.canton_id.nombre) + " / " +str(record.red_id.provincia_id.nombre)
     
     @api.depends('red_id')
     def _red_id_id(self):
