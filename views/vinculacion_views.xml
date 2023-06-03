@@ -55,7 +55,9 @@
             <tree string="Vinculación">
                 <field name="id"/>
                 <field name="tipo_vinculacion_id"/>
+                <field name="fecha_hora"/>
                 <field name="consumidor_id"/>
+                <field name="tipo_consumidor"/>
                 <field name="balance_energetico_id"/>
                 <field name="active"/>
             </tree>

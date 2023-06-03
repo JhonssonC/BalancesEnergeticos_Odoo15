@@ -256,7 +256,13 @@ class balance_energetico(models.Model):
                 medido_ids = [(self.env['vinculacion.medido'].create(c)).id for c in clientes]
                 
                 balance.consumidores_clientes = medido_ids
-                balance.consumo_clientes = sum(c['consumo'] for c in clientes)
+                try:
+                    balance.consumo_clientes = sum(c['consumo'] for c in clientes)
+                except Exception as e:
+                    balance.consumo_clientes=0
+                    print("Error al calcular Consumo de Clientes",e)
+                
+                
             else:
                 balance.consumidores_clientes = None
                 balance.consumo_clientes = None
@@ -353,7 +359,11 @@ class balance_energetico(models.Model):
                
                 
                 balance.consumidores_totaliza = medido_ids
-                balance.consumo_totalizador = sum(c['consumo'] for c in clientes)    
+                try:
+                    balance.consumo_totalizador = sum(c['consumo'] for c in clientes)    
+                except Exception as e:
+                    balance.consumo_totalizador=0
+                    print("Error al calcular Consumo de Totalizadores",e)
             else:
                 balance.consumidores_totaliza = None
                 balance.consumo_totalizador = None
