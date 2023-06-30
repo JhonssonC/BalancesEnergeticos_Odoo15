@@ -153,7 +153,7 @@ class foto(models.Model):
                                         
                                         
                             try:
-                                service = build('drive', 'v3', credentials=creds)
+                                service = build('drive', 'v3', credentials=creds, cache_discovery=False)
                                 
                                 if creds.id_token:
                                     id_tkn = creds.id_token

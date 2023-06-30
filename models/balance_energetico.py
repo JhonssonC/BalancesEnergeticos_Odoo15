@@ -173,7 +173,7 @@ class balance_energetico(models.Model):
         for balance in self:
             
             try:
-                related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "<","5"), ("balance_energetico_id.id","=",str(balance.id))])
+                related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "<","5"), ("balance_energetico_id.id","=",str(balance.id))], order='fecha_hora asc')
                 
                 #fechas del balance
                 fechas = list(set([cli.fecha_hora.date() for cli in related_recordset]))
@@ -280,7 +280,7 @@ class balance_energetico(models.Model):
             try:
                 fechas=[]
                 
-                related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "=","10"), ("balance_energetico_id.id","=",str(balance.id))])
+                related_recordset = self.env["vinculacion"].search([("consumidor_id.tipo_consumidor_id.id", "=","10"), ("balance_energetico_id.id","=",str(balance.id))], order='fecha_hora asc')
                 
                 #fechas del balance
                 fechas = list(set([cli.fecha_hora.date() for cli in related_recordset]))
