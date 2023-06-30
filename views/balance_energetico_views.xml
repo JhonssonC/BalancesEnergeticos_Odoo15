@@ -360,10 +360,13 @@
                 <field name="id"/>
                 <field name="red_id"/>
                 <field name="nombre"/>
-                <field name="consumo_consumidores"/>
-                <field name="consumo_diferencia" string="Energía Perdida"/>
-                <field name="eficacia" digits="[2,2]" widget="percentage"/>
-                <field name="error" digits="[2,2]" widget="percentage"/>
+                
+                <field name="consumo_totalizador" string="Consumo de Totalizador ( Kw )"/>
+                <field name="consumo_consumidores" string="Consumo de Cargas ( Kw )"/>
+                <field name="consumo_diferencia" string="Energía Perdida ( Kw )"/>
+
+                <field name="eficacia" digits="[2,2]" widget="percentage" string="Energía Medida ( % )"/>
+                <field name="error" digits="[2,2]" widget="percentage"  string="Energía Perdida ( % )"/>
             </tree>
         </field>
     </record>
