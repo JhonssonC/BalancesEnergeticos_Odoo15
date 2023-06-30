@@ -10,6 +10,7 @@ class vinculacion(models.TransientModel):
     tipo_vinculacion_id = fields.Many2one("tipo.vinculacion", string="Tipo de Vinculacion")
     consumidor_id = fields.Many2one("consumidor", string="Consumidor")
     consumidor_codigo = fields.Char("Servicio")
+    #consumidor_medidor = fields.Char("Medidor")
     consumidor_cant = fields.Integer("Cantidad de Lecturas Tomadas")
     balance_energetico_id = fields.Many2one("balance.energetico", string="Balance de Energia")
 

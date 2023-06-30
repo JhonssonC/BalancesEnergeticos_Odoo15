@@ -65,6 +65,7 @@
                 <field name="fecha_hora_inicial"/>
                 <field name="fecha_hora_final"/>
                 <field name="consumidor_codigo"/>
+                <field name="consumidor_id.medidor"/>
                 <field name="consumidor_cant"/>
                 <field name="consumidor_id"/>
                 <field name="lectura_final"/>
