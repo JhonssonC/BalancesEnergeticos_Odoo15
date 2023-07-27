@@ -34,7 +34,7 @@
                                     
                                     <label for="medidor"/>
                                     <div class="o_row">
-                                        <field name="medidor" attrs="{'invisible': [('tipo_consumidor_id', '>', 4)]}"/>
+                                        <field name="medidor" attrs="{'invisible': [('tipo_consumidor_id', 'in', (5,6,7,8,9,11))]}"/>
                                         <button id="buscar_medidor" style="horizontal-align: middle; display: block; margin:auto;">Buscar Medidor</button>
                                     </div>
                                     
@@ -81,9 +81,9 @@
                                     <field name="serie" attrs="{'invisible': [('tipo_consumidor_id', '>', 4)]}"/>
                                     <field name="marca_medidor_id" attrs="{'invisible': [('tipo_consumidor_id', '>', 4)]}"/>
                                     <field name="marca_oculta" attrs="{'invisible': 1}"/>
-                                    <field name="potencia_id" attrs="{'invisible': [('tipo_consumidor_id', 'in', (1,2,3,4))]}" />
+                                    <field name="potencia_id" attrs="{'invisible': [('tipo_consumidor_id', 'in', (1,2,3,4,10))]}" />
                                     <field name="tipo_conexion"/>
-                                    <field name="compartido" attrs="{'invisible': [('tipo_consumidor_id', 'in', (5))]}"/>
+                                    <field name="compartido" attrs="{'invisible': [('tipo_consumidor_id', 'in', (5,10))]}"/>
                                     <field name="cantidad_compartido" attrs="{'invisible': [('compartido', '=', False)]}"/>
                                     <field name="punto_carga_id"/>
                                     <field name="active"/>
