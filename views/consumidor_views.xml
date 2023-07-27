@@ -100,19 +100,72 @@
 
 
 
-    <!-- <odoo>
-        <record id="view_popup_tree" model="ir.ui.view">
-            <field name="name">popup.tree.view</field>
-            <field name="model">model.name</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="field1"/>
-                    <field name="field2"/>
-                    <field name="field3"/>
-                </tree>
-            </field>
-        </record>
-    </odoo> -->
+    
+    <!-- Vista personalizada de kanban inicial -->
+    <record id="consumidor_model_view_kanban" model="ir.ui.view">
+    <field name="name">consumidor.kanban</field>
+    <field name="model">consumidor</field>
+    <field name="arch" type="xml">
+        <kanban default_group_by="tipo_consumidor_id" class="o_kanban_small_column o_kanban_project_tasks" js_class="project_kanban">
+            <field name="id"/>
+            <field name="codigo" />
+            <field name="medidor" />
+            <field name="serie"/>
+            <field name="marca_medidor_id"/>
+            <field name="nombre" />
+            <field name="direccion" />
+            <field name="geo" />
+            <field name="potencia_id"/>
+            <field name="tipo_consumidor_id" />
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click oe_kanban_content">
+                        <div class="oe_kanban_primary oe_kanban_details">
+                            <div class="oe_kanban_title o_kanban_tag_section">
+                                <ul>
+                                    <li><h6>Id: <field name="id"/></h6></li>
+                                    <li><h6>Codigo: <field name="codigo"/></h6></li>
+                                    <li><h6>Medidor: <field name="medidor"/></h6></li>
+                                    <li><h6>Marca de Medidor: <field name="marca_medidor_id"/></h6></li>
+                                    <li><h6>Nombre: <field name="nombre"/></h6></li>
+                                    <li><h6>Direccion: <field name="direccion"/></h6></li>
+                                    <li><h6>Geo: <field name="geo"/></h6></li>
+                                    
+                                </ul>
+                            </div>
+                            <div class="oe_kanban_subtitle">
+                                <p><field name="potencia_id"/></p>
+                                <p><field name="tipo_consumidor_id"/></p>
+                                <p>Compartido: <field name="compartido"/></p>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
+    <!-- Vista personalizada de Busqueda inicial -->
+    <record id="consumidor_model_view_search" model="ir.ui.view">
+        <field name="name">consumidor.search</field>
+        <field name="model">consumidor</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="id" enable_counters="1"/>
+                <field name="codigo" enable_counters="1"/>
+                <field name="medidor" enable_counters="1"/>
+                <field name="serie" enable_counters="1"/>
+                <field name="marca_medidor_id" enable_counters="1"/>
+                <field name="nombre" enable_counters="1"/>
+                <field name="direccion" enable_counters="1"/>
+                <field name="geo" enable_counters="1"/>
+                <field name="potencia_id" enable_counters="1"/>
+                <field name="tipo_consumidor_id"  enable_counters="1"/>
+            </search>
+        </field>
+    </record>
+
 
 
     
@@ -140,7 +193,7 @@
     <record id="consumidor_model_action" model="ir.actions.act_window"> 
         <field name="name">Consumidores</field>
         <field name="res_model">consumidor</field> 
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
 
 

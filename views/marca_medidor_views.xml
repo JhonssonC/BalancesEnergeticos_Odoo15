@@ -51,12 +51,60 @@
         </field>
     </record>
 
+
+    
+    <!-- Vista personalizada de kanban inicial -->
+    <record id="marca_medidor_model_view_kanban" model="ir.ui.view">
+    <field name="name">marca.medidor.kanban</field>
+    <field name="model">marca.medidor</field>
+    <field name="arch" type="xml">
+        <kanban class="o_kanban_small_column o_kanban_project_tasks" js_class="project_kanban">
+            <field name="id"/>
+            <field name="descripcion"/>
+            <field name="nomenclatura"/>
+                
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click oe_kanban_content">
+                        <div class="oe_kanban_primary oe_kanban_details">
+                            <div class="oe_kanban_title o_kanban_tag_section">
+                                <ul>
+                                    <li><h6>Id</h6><field name="id"/></li>
+                                    
+                                    <li><h6>Nomenclatura</h6><field name="nomenclatura"/></li>
+
+                                    <li><h6>Descripcion</h6><field name="descripcion"/></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
+    <!-- Vista personalizada de Busqueda inicial -->
+    <record id="marca_medidor_model_view_search" model="ir.ui.view">
+        <field name="name">marca.medidor.search</field>
+        <field name="model">marca.medidor</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="id" enable_counters="1"/>
+                <field name="descripcion" enable_counters="1"/>
+                <field name="nomenclatura" enable_counters="1"/>
+            </search>
+        </field>
+    </record>
+
+
     
     <!-- Vista personalizada Modulo Accion -->
     <record id="marca_medidor_model_action" model="ir.actions.act_window"> 
         <field name="name">Marcas de Medidor</field>
         <field name="res_model">marca.medidor</field> 
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
    
 

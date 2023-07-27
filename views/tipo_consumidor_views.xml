@@ -49,12 +49,41 @@
         </field>
     </record>
 
+
+     <!-- Vista personalizada de kanban inicial -->
+    <record id="tipo_consumidor_model_view_kanban" model="ir.ui.view">
+    <field name="name">tipo.consumidor.kanban</field>
+    <field name="model">tipo.consumidor</field>
+    <field name="arch" type="xml">
+        <kanban default_group_by="nombre" class="o_kanban_small_column o_kanban_project_tasks" js_class="project_kanban">
+            <field name="id"/>
+            <field name="nombre"/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click oe_kanban_content">
+                        <div class="oe_kanban_primary">
+                            <div class="oe_kanban_title">
+                                <h3>
+                                <field name="id"/>
+                                </h3>
+                            </div>
+                            <div class="oe_kanban_subtitle">
+                                <field name="nombre"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
     
     <!-- Vista personalizada Modulo Accion -->
     <record id="tipo_consumidor_model_action" model="ir.actions.act_window"> 
         <field name="name">Tipos de Consumidor</field>
         <field name="res_model">tipo.consumidor</field> 
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
    
 

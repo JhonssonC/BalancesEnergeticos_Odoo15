@@ -372,116 +372,49 @@
     </record>
 
     <!-- Vista personalizada de kanban inicial -->
-    <record id="mbalance_energetico_model_view_kanban" model="ir.ui.view">
+    <record id="balance_energetico_model_view_kanban" model="ir.ui.view">
     <field name="name">balance.energetico.kanban</field>
     <field name="model">balance.energetico</field>
     <field name="arch" type="xml">
         <kanban default_order="consumo_consumidores desc" default_group_by="nombre" class="o_kanban_small_column o_kanban_project_tasks" js_class="project_kanban">
-            <progressbar field="color" colors='{"green": "success", "red": "danger", "yellow": "warning"}'/>
+            <field name="id"/>
+            <field name="red_id"/>
+            <field name="nombre"/>
             <templates>
                 <t t-name="kanban-box">
-                    <div class="oe_kanban_content">
-                        <div class="oe_kanban_primary">
-                            <div class="oe_kanban_title">
-                                <h3>
-                                <field name="id"/>
-                                </h3>
-                                <field name="nombre"/>
+                    <div class="oe_kanban_global_click oe_kanban_content">
+                        <div class="oe_kanban_primary oe_kanban_details">
+                            <div class="oe_kanban_title o_kanban_tag_section">
+                                <ul>
+                                    <li><h3>Id: <field name="id"/></h3></li>
+                                    <li><h3>Red: <field name="red_id"/></h3></li>
+                                </ul>
+                                
                             </div>
                             <div class="oe_kanban_subtitle">
-                                <field name="red_id"/>
+                                <field name="nombre"/>
                             </div>
-                        </div>
-                        <div class="oe_kanban_secondary">
-
-                            <h4>
-                                Consumos Medidos: 
-                            </h4>
-                            <h5>
-                                Clientes: 
-                                <field name="consumo_clientes" readonly="1" nolabel="1"/>
-                            </h5>
-                            <h5>
-                                Luminarias: 
-                                <field name="consumo_luminarias" readonly="1" nolabel="1"/>
-                            </h5>
-                            <h5>
-                                Semaforos: 
-                                <field name="consumo_semaforos" readonly="1" nolabel="1"/>
-                            </h5>
-                            <h5>
-                                Camaras: 
-                                <field name="consumo_camaras" readonly="1" nolabel="1"/>
-                            </h5>
-                            <h5>
-                                Servicios Convenidos: 
-                                <field name="consumo_otros" readonly="1" nolabel="1"/>
-                            </h5>
-                            <h5>
-                                Total Consumos: 
-                                <field name="consumo_consumidores"/>
-                            </h5>
-                            <h5>
-                                Consumo Registrado por Totalizador: 
-                                <field name="consumo_totalizador"/>
-                            </h5>
-                            
-                            <group name="red" colspan="4" col="4" style="background-color:#FADBD8" attrs="{'invisible': [('color','in', ('yellow','green'))]}">
-                                <h5>
-                                    Eficacia: 
-                                </h5>
-                                    <field name="eficacia" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
-                                
-                                <h5>
-                                    Error: 
-                                </h5>
-                                    <field name="error" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
-                                
-                            </group>
-                            
-                            <group name="yellow" colspan="4" col="4" style="background-color:#FCF3CF" attrs="{'invisible': [('color','in', ('red','green'))]}">
-                                 <h5>
-                                    Eficacia: 
-                                </h5>
-                                    <field name="eficacia" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
-                                
-                                <h5>
-                                    Error: 
-                                </h5>
-                                    <field name="error" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
-                            </group>
-                            
-                            <group name="green" colspan="4" col="4" style="background-color:#D1F2EB" attrs="{'invisible': [('color','in', ('yellow','red'))]}">
-                                 <h5>
-                                    Eficacia: 
-                                </h5>
-                                    <field name="eficacia" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
-                                
-                                <h5>
-                                    Error: 
-                                </h5>
-                                    <field name="error" digits="[2,2]" widget="percentage"  decoration-bf="1"/>
-                            </group>
-
-                            
-
-                            <field name="color" invisible="1"/>
-
-                            <!-- <t t-call="JournalBodyGraph"/> -->
-
-
                         </div>
                     </div>
                 </t>
-
-                <t t-name="JournalBodyGraph">
-                    <!-- <field name="chart_data_general" widget="dashboard_graph"/> -->
-                </t>
-                
             </templates>
         </kanban>
     </field>
-</record>
+    </record>
+
+    <!-- Vista personalizada de Busqueda inicial -->
+    <record id="balance_energetico_model_view_search" model="ir.ui.view">
+        <field name="name">balance.energetico.search</field>
+        <field name="model">balance.energetico</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="id" enable_counters="1"/>
+                <field name="red_id" enable_counters="1"/>
+                <field name="nombre" enable_counters="1"/>
+            </search>
+        </field>
+    </record>
+
 
     
     <!-- Vista personalizada Modulo Accion -->

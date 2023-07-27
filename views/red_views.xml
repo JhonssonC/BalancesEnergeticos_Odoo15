@@ -49,17 +49,68 @@
                 <field name="nombre"/>
                 <field name="transformador_id"/>
                 <field name="canton_id"/>
-                <field name="active"/>
+                <field name="provincia_id"/>
             </tree>
         </field>
     </record>
+
+    
+    
+    <!-- Vista personalizada de kanban inicial -->
+    <record id="red_model_view_kanban" model="ir.ui.view">
+    <field name="name">red.kanban</field>
+    <field name="model">red</field>
+    <field name="arch" type="xml">
+        <kanban default_group_by="canton_id" class="o_kanban_small_column o_kanban_project_tasks" js_class="project_kanban">
+            <field name="id"/>
+            <field name="nombre"/>
+            <field name="transformador_id"/>
+            <field name="canton_id"/>
+            <field name="provincia_id"/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click oe_kanban_content">
+                        <div class="oe_kanban_primary oe_kanban_details">
+                            <div class="oe_kanban_title o_kanban_tag_section">
+                                <ul>
+                                    <li><h6>Id</h6><field name="id"/></li>
+                                    <li><h6>Nombre</h6> <field name="nombre"/></li>
+                                    <li><h6>Transformador</h6><field name="transformador_id"/></li>
+                                    <li><h6>Canton</h6><field name="canton_id"/></li>
+                                    <li><h6>Provincia</h6><field name="provincia_id"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
+    <!-- Vista personalizada de Busqueda inicial -->
+    <record id="red_model_view_search" model="ir.ui.view">
+        <field name="name">red.search</field>
+        <field name="model">red</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="id" enable_counters="1"/>
+                <field name="nombre" enable_counters="1"/>
+                <field name="transformador_id" enable_counters="1"/>
+                <field name="canton_id" enable_counters="1"/>
+                <field name="provincia_id" enable_counters="1"/>
+            </search>
+        </field>
+    </record>
+
+
 
     
     <!-- Vista personalizada Modulo Accion -->
     <record id="red_model_action" model="ir.actions.act_window"> 
         <field name="name">Redes</field>
         <field name="res_model">red</field> 
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
    
 

@@ -49,12 +49,50 @@
         </field>
     </record>
 
+    <!-- Vista personalizada de kanban inicial -->
+    <record id="tipo_vinculacion_model_view_kanban" model="ir.ui.view">
+    <field name="name">tipo.vinculacion.kanban</field>
+    <field name="model">tipo.vinculacion</field>
+    <field name="arch" type="xml">
+        <kanban class="o_kanban_small_column o_kanban_project_tasks" js_class="project_kanban">
+            <field name="id"/>
+            <field name="nombre"/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click oe_kanban_content">
+                        <div class="oe_kanban_primary oe_kanban_details">
+                            <div class="oe_kanban_title o_kanban_tag_section">
+                                <ul>
+                                    <li><h6>Id</h6><field name="id"/></li>
+                                    <li><h6>Nombre</h6> <field name="nombre"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
+    <!-- Vista personalizada de Busqueda inicial -->
+    <record id="tipo_vinculacion_model_view_search" model="ir.ui.view">
+        <field name="name">tipo.vinculacion.search</field>
+        <field name="model">tipo.vinculacion</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="id" enable_counters="1"/>
+                <field name="nombre" enable_counters="1"/>
+            </search>
+        </field>
+    </record>
+
     
     <!-- Vista personalizada Modulo Accion -->
     <record id="tipo_vinculacion_model_action" model="ir.actions.act_window"> 
         <field name="name">Tipos de Vinculación</field>
         <field name="res_model">tipo.vinculacion</field> 
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
    
 

@@ -58,11 +58,60 @@
 
 
     
+    <!-- Vista personalizada de kanban inicial -->
+    <record id="transformador_model_view_kanban" model="ir.ui.view">
+    <field name="name">transformador.kanban</field>
+    <field name="model">transformador</field>
+    <field name="arch" type="xml">
+        <kanban default_group_by="potencia" class="o_kanban_small_column o_kanban_project_tasks" js_class="project_kanban">
+            <field name="id"/>
+            <field name="codigo"/>
+            <field name="potencia"/>
+            <field name="serie"/>
+            <field name="coord"/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click oe_kanban_content">
+                        <div class="oe_kanban_primary oe_kanban_details">
+                            <div class="oe_kanban_title o_kanban_tag_section">
+                                <ul>
+                                    <li><h6>Id</h6><field name="id"/></li>
+                                    <li><h6>Codigo</h6> <field name="codigo"/></li>
+                                    <li><h6>Potencia</h6><field name="serie"/></li>
+                                    <li><h6>Serie</h6><field name="potencia"/></li>
+                                    <li><h6>Coord</h6><field name="coord"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
+    <!-- Vista personalizada de Busqueda inicial -->
+    <record id="transformador_model_view_search" model="ir.ui.view">
+        <field name="name">transformador.search</field>
+        <field name="model">transformador</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="id" enable_counters="1"/>
+                <field name="codigo" enable_counters="1"/>
+                <field name="serie" enable_counters="1"/>
+                <field name="potencia" enable_counters="1"/>
+                <field name="coord" enable_counters="1"/>
+            </search>
+        </field>
+    </record>
+
+
+    
     <!-- Vista personalizada Modulo Accion -->
     <record id="transformador_model_action" model="ir.actions.act_window"> 
         <field name="name">Transformadores</field>
         <field name="res_model">transformador</field> 
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
    
 

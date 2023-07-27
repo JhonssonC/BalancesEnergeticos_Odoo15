@@ -29,10 +29,7 @@
             <field name="name">Regla para modelo de foto (Usuarios)</field>
             <field name="model_id" ref="model_foto"/>
             <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
-            <field name="domain_force">[
-                '|', ('user_id', '=', user.id),
-                     ('user_id', '=', False)
-            ]</field>
+            <field name="domain_force">[]</field>
         </record>
         <record id="rule_foto_manager" model="ir.rule">
             <field name="name">Regla para modelo de foto (Administradores)</field>
@@ -47,10 +44,7 @@
             <field name="name">Regla para modelo de Coordenadas (Usuarios)</field>
             <field name="model_id" ref="model_coordenada"/>
             <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
-            <field name="domain_force">[
-                '|', ('user_id', '=', user.id),
-                     ('user_id', '=', False)
-            ]</field>
+            <field name="domain_force">[]</field>
         </record>
         <record id="rule_coordenada_manager" model="ir.rule">
             <field name="name">Regla para modelo de Coordenadas (Administradores)</field>
@@ -65,10 +59,7 @@
             <field name="name">Regla para modelo de balance_energetico (Usuarios)</field>
             <field name="model_id" ref="model_balance_energetico"/>
             <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
-            <field name="domain_force">[
-                '|', ('user_id', '=', user.id),
-                     ('user_id', '=', False)
-            ]</field>
+            <field name="domain_force">[]</field>
         </record>
         <record id="rule_balance_energetico_manager" model="ir.rule">
             <field name="name">Regla para modelo de balance_energetico (Administradores)</field>
@@ -83,10 +74,7 @@
             <field name="name">Regla para modelo de canton (Usuarios)</field>
             <field name="model_id" ref="model_canton"/>
             <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
-            <field name="domain_force">[
-                '|', ('user_id', '=', user.id),
-                     ('user_id', '=', False)
-            ]</field>
+            <field name="domain_force">[]</field>
         </record>
         <record id="rule_canton_manager" model="ir.rule">
             <field name="name">Regla para modelo de canton (Administradores)</field>
@@ -101,10 +89,7 @@
             <field name="name">Regla para modelo de consumidor (Usuarios)</field>
             <field name="model_id" ref="model_consumidor"/>
             <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
-            <field name="domain_force">[
-                '|', ('user_id', '=', user.id),
-                     ('user_id', '=', False)
-            ]</field>
+            <field name="domain_force">[]</field>
         </record>
         <record id="rule_consumidor_manager" model="ir.rule">
             <field name="name">Regla para modelo de consumidor (Administradores)</field>
@@ -119,10 +104,7 @@
             <field name="name">Regla para modelo de marca_medidor (Usuarios)</field>
             <field name="model_id" ref="model_marca_medidor"/>
             <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
-            <field name="domain_force">[
-                '|', ('user_id', '=', user.id),
-                     ('user_id', '=', False)
-            ]</field>
+            <field name="domain_force">[]</field>
         </record>
         <record id="rule_marca_medidor_manager" model="ir.rule">
             <field name="name">Regla para modelo de marca_medidor (Administradores)</field>
@@ -137,10 +119,7 @@
             <field name="name">Regla para modelo de provincia (Usuarios)</field>
             <field name="model_id" ref="model_provincia"/>
             <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
-            <field name="domain_force">[
-                '|', ('user_id', '=', user.id),
-                     ('user_id', '=', False)
-            ]</field>
+            <field name="domain_force">[]</field>
         </record>
         <record id="rule_provincia_manager" model="ir.rule">
             <field name="name">Regla para modelo de provincia (Administradores)</field>
@@ -155,10 +134,7 @@
             <field name="name">Regla para modelo de potencia (Usuarios)</field>
             <field name="model_id" ref="model_potencia"/>
             <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
-            <field name="domain_force">[
-                '|', ('user_id', '=', user.id),
-                     ('user_id', '=', False)
-            ]</field>
+            <field name="domain_force">[]</field>
         </record>
         <record id="rule_potencia_manager" model="ir.rule">
             <field name="name">Regla para modelo de potencia (Administradores)</field>
@@ -173,10 +149,7 @@
             <field name="name">Regla para modelo de punto_carga (Usuarios)</field>
             <field name="model_id" ref="model_punto_carga"/>
             <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
-            <field name="domain_force">[
-                '|', ('user_id', '=', user.id),
-                     ('user_id', '=', False)
-            ]</field>
+            <field name="domain_force">[]</field>
         </record>
         <record id="rule_punto_carga_manager" model="ir.rule">
             <field name="name">Regla para modelo de punto_carga (Administradores)</field>
@@ -191,10 +164,7 @@
             <field name="name">Regla para modelo de red (Usuarios)</field>
             <field name="model_id" ref="model_red"/>
             <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
-            <field name="domain_force">[
-                '|', ('user_id', '=', user.id),
-                     ('user_id', '=', False)
-            ]</field>
+            <field name="domain_force">[]</field>
         </record>
         <record id="rule_red_manager" model="ir.rule">
             <field name="name">Regla para modelo de red (Administradores)</field>
@@ -209,10 +179,7 @@
             <field name="name">Regla para modelo de tipo_consumidor (Usuarios)</field>
             <field name="model_id" ref="model_tipo_consumidor"/>
             <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
-            <field name="domain_force">[
-                '|', ('user_id', '=', user.id),
-                     ('user_id', '=', False)
-            ]</field>
+            <field name="domain_force">[]</field>
         </record>
         <record id="rule_tipo_consumidor_manager" model="ir.rule">
             <field name="name">Regla para modelo de tipo_consumidor (Administradores)</field>
@@ -228,10 +195,7 @@
             <field name="name">Regla para modelo de tipo_vinculacion (Usuarios)</field>
             <field name="model_id" ref="model_tipo_vinculacion"/>
             <field name="groups" eval="[Command.link(ref('group_balances_energeticos_user'))]"/>
-            <field name="domain_force">[
-                '|', ('user_id', '=', user.id),
-                     ('user_id', '=', False)
-            ]</field>
+            <field name="domain_force">[]</field>
         </record>
         <record id="rule_tipo_vinculacion_manager" model="ir.rule">
             <field name="name">Regla para modelo de tipo_vinculacion (Administradores)</field>

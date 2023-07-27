@@ -6,7 +6,8 @@ from datetime import datetime
 class balance_energetico(models.Model):
     _name = "balance.energetico"
     _description = "Balance Energético"
-    _rec_name = "nombre"
+    #es preferida esta linea para vista kanban
+    # _rec_name = "nombre"
     
     nombre = fields.Char("Nombre")
     costo_kwh = fields.Float("Costo Kw/H", default="0.10")

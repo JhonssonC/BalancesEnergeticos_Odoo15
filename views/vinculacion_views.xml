@@ -64,6 +64,58 @@
         </field>
     </record>
 
+
+    
+    <!-- Vista personalizada de kanban inicial -->
+    <record id="vinculacion_model_view_kanban" model="ir.ui.view">
+    <field name="name">vinculacion.kanban</field>
+    <field name="model">vinculacion</field>
+    <field name="arch" type="xml">
+        <kanban class="o_kanban_small_column o_kanban_project_tasks" js_class="project_kanban">
+            <field name="id"/>
+            <field name="tipo_vinculacion_id"/>
+            <field name="fecha_hora"/>
+            <field name="consumidor_id"/>
+            <field name="tipo_consumidor"/>
+            <field name="balance_energetico_id"/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click oe_kanban_content">
+                        <div class="oe_kanban_primary oe_kanban_details">
+                            <div class="oe_kanban_title o_kanban_tag_section">
+                                <ul>
+                                    <li><h6>Id</h6><field name="id"/></li>
+                                    <li><h6>Tipo de Vinculacion</h6> <field name="tipo_vinculacion_id"/></li>
+                                    <li><h6>Fecha</h6><field name="fecha_hora"/></li>
+                                    <li><h6>Consumidor</h6><field name="consumidor_id"/></li>
+                                    <li><h6>Tipo de Consumidor</h6><field name="tipo_consumidor"/></li>
+                                    <li><h6>Balance</h6><field name="balance_energetico_id"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
+    <!-- Vista personalizada de Busqueda inicial -->
+    <record id="vinculacion_model_view_search" model="ir.ui.view">
+        <field name="name">vinculacion.search</field>
+        <field name="model">vinculacion</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="id" enable_counters="1"/>
+                <field name="tipo_vinculacion_id" enable_counters="1"/>
+                <field name="fecha_hora" enable_counters="1"/>
+                <field name="consumidor_id" enable_counters="1"/>
+                <field name="balance_energetico_id" enable_counters="1"/>
+            </search>
+        </field>
+    </record>
+
+
     
     <!-- Vista personalizada Modulo Accion -->
     <record id="vinculacion_model_action" model="ir.actions.act_window"> 
