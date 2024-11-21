@@ -11,7 +11,7 @@ class red(models.Model):
 
     transformador_id = fields.Many2one("transformador", string="Transformador")
     provincia_id = fields.Many2one("provincia", "Provincia")
-    canton_id = fields.Many2one("canton", "Canton")
+    canton_id = fields.Many2one("canton", "")
 
     active = fields.Boolean('Esta activo', default=True)
     user_id = fields.Many2one('res.users', default=lambda self: self.env.user)
